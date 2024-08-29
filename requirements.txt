@@ -1,0 +1,7 @@
+requests
+bs4
+pandas
+undetected_chromedriver
+openpyxl
+styled-components
+react-form-wizard-component
