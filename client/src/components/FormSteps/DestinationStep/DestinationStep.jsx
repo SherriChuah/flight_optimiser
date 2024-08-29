@@ -26,6 +26,7 @@ export const DestinationStep = (step) => {
             
             {FORM_CONTENT[step.step].map(item => (
                 <Input key={item.name} {...item} onChange={onChange} form={form} onClick={onItemClick}/>
+                
             ))}
             
 

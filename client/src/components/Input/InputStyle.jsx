@@ -9,21 +9,23 @@ export const Label = styled.label`
 `
 
 export const CustomInput = styled.input`
-    border:1px solid var(--gray);
+    border:2px solid var(--gray);
     border-radius:4px;
     height:2.8rem;
     width:100%;
     box-sizing: border-box;
     padding-inline:0.8rem;
     &:active, &:focus {
-        outline:1px solid var(--primary);
+        outline:2px solid var(--primary);
     }
 `
 
 export const InputWrapper = styled.div`
-    width:50%;
-    margin-bottom:1rem;
-    
+    width:100%;
+    margin-top:2rem; 
+    margin-bottom:3rem; 
+    padding-left:30vw;
+    padding-right:30vw;
 `
 
 export const CustomCheck = styled.div`

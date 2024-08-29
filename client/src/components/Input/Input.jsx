@@ -1,4 +1,4 @@
-import { CustomInput, InputWrapper, Label, CustomCheck, LogoImg } from "./Input_style";
+import { CustomInput, InputWrapper, Label, CustomCheck, LogoImg } from "./InputStyle";
 
 const CheckBox = ({ icon, heading, subHeading, onClick, name, form }) => (
     <CustomCheck onClick={() => onClick({ value: name, fieldName: 'onBoardType' })} active={form.onBoardType===name}>
@@ -28,8 +28,7 @@ const Mapper = {
     groupCheckBox: MultiCheck
 }
 
-export const Input = (props) => {  
-    console.log("THIS IS HERE", props)
+export const Input = (props) => {
     const Component = Mapper[props.type] || Mapper.default
     return <Component {...props} />
 }
