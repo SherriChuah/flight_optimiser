@@ -3,6 +3,10 @@ import { Heading } from "./DestinationStepStyle";
 import { Input } from "./../../Input/Input";
 import { FORM_CONTENT } from "./../../../containers/Form/FormConstants";
 
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+
+
 export const DestinationStep = (step) => {
     const [inputValue, setInputValue] = useState('');
     const [form, setForm] = useState({});
@@ -20,12 +24,27 @@ export const DestinationStep = (step) => {
         setForm(prev=>({...prev, [name]:value}))
     }
 
+    // const testing_lst = [
+    //     {'name': 'hello', 'surname': 'world'},
+    //     {'name': 'sherri', 'surname': 'myworld'},
+    //     {'name': 'mybanana', 'surname': 'bananamy'}]
+
+    const testing_lst = ['name', 'hello', 'surname', 'world']
+
     return (
         <div>
             <Heading>Where to next?</Heading>
             
             {FORM_CONTENT[step.step].map(item => (
-                <Input key={item.name} {...item} onChange={onChange} form={form} onClick={onItemClick}/>
+                // <Input key={item.name} {...item} onChange={onChange} form={form} onClick={onItemClick}/>
+
+                <Autocomplete
+                    disablePortal
+                    autoHighlight
+                    options={testing_lst}
+                    sx={{ width: 300 }}
+                    renderInput={(params) => <TextField {...params} label="testing" />}
+                />
                 
             ))}
             

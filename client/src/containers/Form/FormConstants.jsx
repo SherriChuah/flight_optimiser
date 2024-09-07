@@ -10,7 +10,7 @@ export const STEP_INFO = {
         content: DestinationStep
     },
     STEP_2: {
-        progress_title: "Search Details"
+        progress_title: "Search Details",
     },
     STEP_3: {
         progress_title: "People Details"
