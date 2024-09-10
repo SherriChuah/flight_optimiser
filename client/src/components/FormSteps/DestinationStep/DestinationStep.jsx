@@ -120,39 +120,7 @@ export const DestinationStep = (step) => {
                             'iataParts': iataParts
                         }
 
-                        return <CustomOption matches={allMatches}/>
-                
-                        return (
-                          <li {...props}>
-                            <Typography>
-                              {/* Highlighted name */}
-                              {anameParts.map((part, index) => (
-                                <span
-                                  key={`name-${index}`}
-                                  style={{
-                                    fontWeight: part.highlight ? 700 : 400,
-                                    backgroundColor: part.highlight ? '#ffff00' : 'transparent',
-                                  }}
-                                >
-                                  {part.text}
-                                </span>
-                              ))}
-                              {' - '}
-                              {/* Highlighted description */}
-                              {iataParts.map((part, index) => (
-                                <span
-                                  key={`description-${index}`}
-                                  style={{
-                                    fontWeight: part.highlight ? 700 : 400,
-                                    backgroundColor: part.highlight ? '#ffff00' : 'transparent',
-                                  }}
-                                >
-                                  {part.text}
-                                </span>
-                              ))}
-                            </Typography>
-                          </li>
-                        );
+                        return <CustomOption matches={allMatches}/>;
                     }}
                 />
                 
