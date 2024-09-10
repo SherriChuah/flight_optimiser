@@ -8,7 +8,7 @@ app = Flask(__name__)
 cors = CORS(app, origin='*') # need set here to not accept all origins
 
 
-@app.route('/airpotcodes', methods=['GET'])
+@app.route('/airportcodes', methods=['GET'])
 def airportcodes():
     # query = request.args.get('q', '')
 

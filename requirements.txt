@@ -5,3 +5,6 @@ undetected_chromedriver
 openpyxl
 styled-components
 react-form-wizard-component
+sqlalchemy
+python-dotenv
+pymysql
