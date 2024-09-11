@@ -82,10 +82,10 @@ export const DestinationStep = (step) => {
                         }}
                         onInputChange={(event, newInputValue) => {
                             setInputValue(newInputValue);
-                            console.log('inputValue', {inputValue})
                         }}
                         onChange={(event, newValue) => {
-                            setValue(newValue === null ? '' : newValue.iata);
+                            const currValue = newValue === null ? '' : newValue.iata
+                            setValue(currValue);
                         }}
                         renderOption={(props, option, { inputValue }) => {
                             const { key, ...optionProps } = props;

@@ -4,6 +4,20 @@
 import { DestinationStep } from "../../components/FormSteps/DestinationStep/DestinationStep"
 
 
+// const checkValidateTab = () => {
+//     console.log(firstTabInput);
+//     if (firstTabInput === "") {
+//       return false;
+//     }
+//     return true;
+// };
+
+// const errorMessages = () => {
+//     // alert("Please fill in the required fields");
+//     return <span style={{ color: "red", fontSize: "14px" }}>This field is required</span>;
+// };
+
+
 export const STEP_INFO = {
     STEP_1: {
         progress_title: 'Destination',
@@ -87,3 +101,11 @@ export const FORM_CONTENT = {
         ]
     }]
 }
+
+
+// export const FORM_VALIDATION ={
+//     STEP_1: {},
+//     STEP_2: {isValid: checkValidateTab(), validationError: errorMessages},
+//     STEP_3: {},
+//     STEP_4: {}
+// }
