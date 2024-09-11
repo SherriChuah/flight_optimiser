@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Heading, Button, CustomForm, Title, SubTitle, Success } from "./Form_style"
-// import { DestinationStep } from "../../components/FormSteps/DestinationStep/DestinationStep";
+// import { useState } from "react";
+// import { Heading, Button, CustomForm, Title, SubTitle, Success } from "./FormStyle"
+// // import { DestinationStep } from "../../components/FormSteps/DestinationStep/DestinationStep";
 
 import FormWizard from "react-form-wizard-component";
 import "react-form-wizard-component/dist/style.css";
@@ -121,6 +121,7 @@ export const Form = () => {
                 shape="circle"
                 color="var(--primary)"
                 onComplete={handleComplete}
+                // nextButtonDisabled={!isNextButtonEnabled}
                 // onTabChange={tabChanged}
             >
                 {ALL_STEPS_LIST.map((step, index, arr) => {
