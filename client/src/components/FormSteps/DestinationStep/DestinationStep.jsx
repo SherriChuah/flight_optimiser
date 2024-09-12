@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Heading, InputBox } from "./DestinationStepStyle";
-// import { Input } from "./../../Input/Input";
 import { FORM_CONTENT } from "./../../../containers/Form/FormConstants";
 import { CustomOption } from './CustomOption'
 
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import Typography from '@mui/material/Typography';
 
 import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
@@ -14,24 +12,10 @@ import match from 'autosuggest-highlight/match';
 import axios from 'axios';
 
 
-export const DestinationStep = (step) => {
-    const [inputValue, setInputValue] = useState('');
-    const [value, setValue] = useState('');
-    // const [form, setForm] = useState({});
+export const DestinationStep = ({step, inputValidation}) => {
+    const [handleInputChange, validationFunction] = inputValidation;
     const [airports, setAirports] = useState([]);
-
-    // const handleInputChange = (e) => {
-    //     setInputValue(e.target.value);
-    // }
-
-    // const onItemClick = ({ fieldName, value })=>{
-    //     setForm(prev => ({ ...prev, [fieldName]: value }));
-    // }
-
-    // const onChange = (e)=>{
-    //     const {value, name } = e.target
-    //     setForm(prev=>({...prev, [name]:value}))
-    // }
+    
 
     useEffect(() => {
         const fetchData = async () => {
@@ -57,11 +41,11 @@ export const DestinationStep = (step) => {
         <div>
             <Heading>Where to next?</Heading>
             
-            {FORM_CONTENT[step.step].map(item => (
+            {FORM_CONTENT[step].map(item => (
 
                 <InputBox>
                     <Autocomplete
-                        key={`${step.step}`}
+                        id={`${step}`}
                         sx={{ width: 350 }}
                         options={airports}
                         renderInput={
@@ -80,13 +64,13 @@ export const DestinationStep = (step) => {
                     
                             return filteredOptions.slice(0, 15);
                         }}
-                        onInputChange={(event, newInputValue) => {
-                            setInputValue(newInputValue);
-                        }}
                         onChange={(event, newValue) => {
                             const currValue = newValue === null ? '' : newValue.iata
-                            setValue(currValue);
+                            handleInputChange(validationFunction, currValue);
                         }}
+                        // onInputChange={(event, newInputValue) => {
+                        //     setInputValue(newInputValue);
+                        // }}
                         renderOption={(props, option, { inputValue }) => {
                             const { key, ...optionProps } = props;
                             const { airport_name, city, country, iata } = option;
