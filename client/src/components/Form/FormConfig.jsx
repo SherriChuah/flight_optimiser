@@ -1,4 +1,4 @@
-import { checkValidateTab, errorMessages } from './../../errorChecking/validationCheck';
+import { checkValidateTab, errorMessages } from '../../errorChecking/validationCheck';
 
 export const getFormValidation = (setDestinationValue, destinationValue) => {
     return {

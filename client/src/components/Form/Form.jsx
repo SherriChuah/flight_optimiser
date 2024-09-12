@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import FormWizard from "react-form-wizard-component";
 import "react-form-wizard-component/dist/style.css";
 import { ALL_STEPS_LIST, STEP_INFO } from "./FormConstants";
@@ -22,12 +22,29 @@ export const Form = () => {
 
     const defaultFunction = () => {};
 
+    // const formWizardRef = useRef(null);
+
+    // const goToStep = (stepIndex) => {
+    //     if (formWizardRef.current) {
+    //         formWizardRef.current.goToStep(stepIndex);
+    //     }
+    // };
+
+    const tabChanged = ({
+        prevIndex,
+        nextIndex,
+      }) => {
+        console.log("prevIndex", prevIndex);
+        console.log("nextIndex", nextIndex);
+      };
+
     return (
         <FormWizard
             stepSize="xs"
             shape="circle"
             color="var(--primary)"
             onComplete={handleComplete}
+            onTabChange={tabChanged}
             nextButtonTemplate={(handleNext) => (
                 <Button onClick={handleNext}>
                   Next

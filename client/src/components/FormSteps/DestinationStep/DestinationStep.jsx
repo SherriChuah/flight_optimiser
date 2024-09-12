@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Heading, InputBox } from "./DestinationStepStyle";
-import { FORM_CONTENT } from "./../../../containers/Form/FormConstants";
+import { FORM_CONTENT } from "../../Form/FormConstants";
 import { CustomOption } from './CustomOption'
 
 import TextField from '@mui/material/TextField';
@@ -12,7 +12,7 @@ import match from 'autosuggest-highlight/match';
 import axios from 'axios';
 
 
-export const DestinationStep = ({step, inputValidation}) => {
+export const DestinationStep = ({step, inputValidation, skipToStep}) => {
     const [handleInputChange, validationFunction] = inputValidation;
     const [airports, setAirports] = useState([]);
     
@@ -95,8 +95,11 @@ export const DestinationStep = ({step, inputValidation}) => {
                         }}
                     />
                 </InputBox>
-                
             ))}
+            <br />
+            {/* <div>
+                <a href="#" onClick={(e) => { e.preventDefault(); skipToStep(2); }}>Go to Step 3</a>
+            </div> */}
         </div>
     )
 }

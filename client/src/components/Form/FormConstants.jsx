@@ -1,4 +1,7 @@
-import { DestinationStep } from "../../components/FormSteps/DestinationStep/DestinationStep"
+import { DestinationStep } from "../FormSteps/DestinationStep/DestinationStep";
+import { SearchDetailsStep } from "../FormSteps/SearchDetailsStep/SearchDetailsStep";
+import { PeopleDetailsStep } from "../FormSteps/PeopleDetailsStep/PeopleDetailsStep";
+import { FlightResultStep } from "../FormSteps/FlightResultStep/FlightResultStep";
 
 
 
@@ -9,12 +12,15 @@ export const STEP_INFO = {
     },
     STEP_2: {
         progress_title: "Search Details",
+        content: SearchDetailsStep
     },
     STEP_3: {
-        progress_title: "People Details"
+        progress_title: "People Details",
+        content: PeopleDetailsStep
     },
     STEP_4: {
-        progress_title: "Flight Results"
+        progress_title: "Flight Results",
+        content: FlightResultStep
     }
 }
 
