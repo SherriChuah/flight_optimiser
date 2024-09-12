@@ -12,7 +12,7 @@ import match from 'autosuggest-highlight/match';
 import axios from 'axios';
 
 
-export const DestinationStep = ({step, inputValidation, skipToStep}) => {
+export const DestinationStep = ({step, inputValidation, goToTab}) => {
     const [handleInputChange, validationFunction] = inputValidation;
     const [airports, setAirports] = useState([]);
     
@@ -68,9 +68,6 @@ export const DestinationStep = ({step, inputValidation, skipToStep}) => {
                             const currValue = newValue === null ? '' : newValue.iata
                             handleInputChange(validationFunction, currValue);
                         }}
-                        // onInputChange={(event, newInputValue) => {
-                        //     setInputValue(newInputValue);
-                        // }}
                         renderOption={(props, option, { inputValue }) => {
                             const { key, ...optionProps } = props;
                             const { airport_name, city, country, iata } = option;
@@ -97,9 +94,9 @@ export const DestinationStep = ({step, inputValidation, skipToStep}) => {
                 </InputBox>
             ))}
             <br />
-            {/* <div>
-                <a href="#" onClick={(e) => { e.preventDefault(); skipToStep(2); }}>Go to Step 3</a>
-            </div> */}
+            <div>
+                Have the excel/image ready? <a href="#" onClick={(e) => { e.preventDefault(); goToTab(2); }}>Click here</a>!
+            </div>
         </div>
     )
 }

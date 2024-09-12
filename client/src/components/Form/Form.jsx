@@ -22,13 +22,13 @@ export const Form = () => {
 
     const defaultFunction = () => {};
 
-    // const formWizardRef = useRef(null);
+    const formWizardRef = useRef(null);
 
-    // const goToStep = (stepIndex) => {
-    //     if (formWizardRef.current) {
-    //         formWizardRef.current.goToStep(stepIndex);
-    //     }
-    // };
+    const goToTab = (stepIndex) => {
+        if (formWizardRef.current) {
+            formWizardRef.current.goToTab(stepIndex);
+        }
+    };
 
     const tabChanged = ({
         prevIndex,
@@ -40,6 +40,7 @@ export const Form = () => {
 
     return (
         <FormWizard
+            ref={formWizardRef}
             stepSize="xs"
             shape="circle"
             color="var(--primary)"
@@ -57,7 +58,7 @@ export const Form = () => {
                     <FormWizard.TabContent
                         title={STEP_INFO[step] && STEP_INFO[step].progress_title}
                         {...FORM_VALIDATION[step]['attributes']}
-                    ><StepComponent step={step} inputValidation={[handleInputChange, FORM_VALIDATION[step]?.function ?? defaultFunction]} /></FormWizard.TabContent>
+                    ><StepComponent step={step} inputValidation={[handleInputChange, FORM_VALIDATION[step]?.function ?? defaultFunction]} goToTab={goToTab} /></FormWizard.TabContent>
                 );
             })}
 
