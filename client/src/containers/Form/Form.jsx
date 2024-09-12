@@ -3,6 +3,7 @@ import FormWizard from "react-form-wizard-component";
 import "react-form-wizard-component/dist/style.css";
 import { ALL_STEPS_LIST, STEP_INFO } from "./FormConstants";
 import { getFormValidation } from './FormConfig';
+import { Button } from './FormStyle';
 
 
 export const Form = () => {
@@ -27,6 +28,11 @@ export const Form = () => {
             shape="circle"
             color="var(--primary)"
             onComplete={handleComplete}
+            nextButtonTemplate={(handleNext) => (
+                <Button onClick={handleNext}>
+                  Next
+                </Button>
+            )}
         >
             {ALL_STEPS_LIST.map((step, index, arr) => {
                 const StepComponent = STEP_INFO[step].content;
