@@ -3,7 +3,7 @@ import { checkValidateTab, errorMessages } from '../../errorChecking/validationC
 export const getFormValidation = (setDestinationValue, destinationValue) => {
     return {
         STEP_1: {
-            attributes: {},
+            // attributes: {},
             function: setDestinationValue
         },
         STEP_2: {
@@ -11,10 +11,10 @@ export const getFormValidation = (setDestinationValue, destinationValue) => {
             
         },
         STEP_3: {
-            attributes: {}
+            // attributes: {}
         },
         STEP_4: {
-            attributes: {}
+            // attributes: {}
         }
     }
 }

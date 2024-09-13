@@ -10,5 +10,7 @@ export const Button = styled.button`
     border-radius:4px;
     text-space:2px;
     margin-top:1rem;
+    margin-right:1rem;
+    margin-lef:1rem;
     cursor:pointer;
 `

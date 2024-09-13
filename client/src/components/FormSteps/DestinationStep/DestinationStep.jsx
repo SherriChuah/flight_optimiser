@@ -12,7 +12,7 @@ import match from 'autosuggest-highlight/match';
 import axios from 'axios';
 
 
-export const DestinationStep = ({step, inputValidation, goToTab}) => {
+export const DestinationStep = ({step, inputValidation, goToTab, inputValues}) => {
     const [handleInputChange, validationFunction] = inputValidation;
     const [airports, setAirports] = useState([]);
     
@@ -52,7 +52,7 @@ export const DestinationStep = ({step, inputValidation, goToTab}) => {
                             (params) => <TextField {...params} label="Search airport" />
                         }
                         noOptionsText='No option'
-                        getOptionLabel={(option) => `${option.airport_name} (${option.iata})`}
+                        getOptionLabel={(option) => option ? `${option.airport_name} (${option.iata})` : ''}
                         filterOptions={(options, { inputValue }) => {
                             const filteredOptions = options.filter((option) => {
                                 const airportNameMatch = option.airport_name.toLowerCase().includes(inputValue.toLowerCase());
@@ -64,8 +64,9 @@ export const DestinationStep = ({step, inputValidation, goToTab}) => {
                     
                             return filteredOptions.slice(0, 15);
                         }}
+                        value={inputValues[0]}
                         onChange={(event, newValue) => {
-                            const currValue = newValue === null ? '' : newValue.iata
+                            const currValue = newValue === null ? '' : newValue
                             handleInputChange(validationFunction, currValue);
                         }}
                         renderOption={(props, option, { inputValue }) => {
@@ -95,7 +96,11 @@ export const DestinationStep = ({step, inputValidation, goToTab}) => {
             ))}
             <br />
             <div>
-                Have the excel/image ready? <a href="#" onClick={(e) => { e.preventDefault(); goToTab(2); }}>Click here</a>!
+                Have the excel/image ready? <a href="#" onClick={(e) => { 
+                    e.preventDefault(); 
+                    goToTab(2);
+                    handleInputChange(validationFunction, '');
+                }}>Click here</a>!
             </div>
         </div>
     )
