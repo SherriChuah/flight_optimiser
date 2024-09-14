@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Heading, InputBox } from "./DestinationStepStyle";
-import { FORM_CONTENT } from "../../Form/FormConstants";
+import { FORM_CONTENT } from "../../../containers/Form/FormConstants";
 import { CustomOption } from './CustomOption'
 
 import TextField from '@mui/material/TextField';

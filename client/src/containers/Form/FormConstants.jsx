@@ -1,7 +1,7 @@
-import { DestinationStep } from "../FormSteps/DestinationStep/DestinationStep";
-import { SearchDetailsStep } from "../FormSteps/SearchDetailsStep/SearchDetailsStep";
-import { PeopleDetailsStep } from "../FormSteps/PeopleDetailsStep/PeopleDetailsStep";
-import { FlightResultStep } from "../FormSteps/FlightResultStep/FlightResultStep";
+import { DestinationStep } from "../../components/FormSteps/DestinationStep/DestinationStep";
+import { SearchDetailsStep } from "../../components/FormSteps/SearchDetailsStep/SearchDetailsStep";
+import { PeopleDetailsStep } from "../../components/FormSteps/PeopleDetailsStep/PeopleDetailsStep";
+import { FlightResultStep } from "../../components/FormSteps/FlightResultStep/FlightResultStep";
 
 
 
