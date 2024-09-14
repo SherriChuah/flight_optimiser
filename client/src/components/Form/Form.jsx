@@ -29,7 +29,7 @@ export const Form = () => {
         if (formWizardRef.current) {
             formWizardRef.current.goToTab(stepIndex);
         }
-        window.history.pushState({ stepIndex }, `Tab ${stepIndex}`, `#step-${stepIndex}`);
+        window.history.pushState({ stepIndex });
     };
 
     useEffect(() => {
