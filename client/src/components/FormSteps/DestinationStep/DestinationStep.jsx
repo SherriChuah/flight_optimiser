@@ -13,7 +13,7 @@ import axios from 'axios';
 
 
 export const DestinationStep = ({step, inputValidation, goToTab, inputValues}) => {
-    const [handleInputChange, validationFunction] = inputValidation;
+    const [handleInputChange, setValueFunction] = inputValidation;
     const [airports, setAirports] = useState([]);
     
 
@@ -67,7 +67,7 @@ export const DestinationStep = ({step, inputValidation, goToTab, inputValues}) =
                         value={inputValues[0]}
                         onChange={(event, newValue) => {
                             const currValue = newValue === null ? '' : newValue
-                            handleInputChange(validationFunction, currValue);
+                            handleInputChange(setValueFunction, currValue);
                         }}
                         renderOption={(props, option, { inputValue }) => {
                             const { key, ...optionProps } = props;
@@ -99,7 +99,7 @@ export const DestinationStep = ({step, inputValidation, goToTab, inputValues}) =
                 Have the excel/image ready? <a href="#" onClick={(e) => { 
                     e.preventDefault(); 
                     goToTab(2);
-                    handleInputChange(validationFunction, '');
+                    handleInputChange(setValueFunction, '');
                 }}>Click here</a>!
             </div>
         </div>
