@@ -8,6 +8,13 @@ import { Button, FormContainer, Title } from './FormStyle';
 
 export const Form = () => {
     const [destinationValue, setDestinationValue] = useState('');
+    const [travelDates, setTravelDates] = useState([
+        {
+          startDate: new Date(),
+          endDate: new Date(),
+          key: 'selection'
+        }
+      ]);
 
 
     const handleComplete = () => {
@@ -17,9 +24,10 @@ export const Form = () => {
 
     const handleInputChange = (setFunction, newInputValue) => {
         setFunction(newInputValue);
+        console.log(newInputValue);
     };
 
-    const FORM_VALIDATION = getFormValidation(setDestinationValue, destinationValue);
+    const FORM_VALIDATION = getFormValidation(setDestinationValue, destinationValue, setTravelDates);
 
     const defaultFunction = () => {};
 
@@ -45,9 +53,9 @@ export const Form = () => {
         return () => window.removeEventListener("popstate", handlePopState);
     }, []);
 
-    const tabChanged = () => {
-        console.log('Destination:', destinationValue);
-      };
+    // const tabChanged = () => {
+    //     console.log('Destination:', destinationValue);
+    // };
 
     return (
         <FormContainer>
@@ -59,7 +67,7 @@ export const Form = () => {
                 shape="circle"
                 color="var(--primary)"
                 onComplete={handleComplete}
-                onTabChange={tabChanged}
+                // onTabChange={tabChanged}
                 nextButtonTemplate={(handleNext) => (
                     <Button onClick={handleNext}>
                     Next
@@ -81,7 +89,7 @@ export const Form = () => {
                             step={step} 
                             inputValidation={[handleInputChange, FORM_VALIDATION[step]?.function ?? defaultFunction]} 
                             goToTab={goToTab}
-                            inputValues={index == 0 ? [destinationValue] : null}
+                            inputValues={index == 0 ? [destinationValue] : index == 1 ? travelDates : null}
                         /></FormWizard.TabContent>
                     );
                 })}

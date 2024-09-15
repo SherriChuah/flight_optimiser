@@ -16,17 +16,19 @@ export const Button = styled.button`
 `
 
 export const FormContainer = styled.div`
-  max-width: 600px;
+  max-width: 90%;
   margin: 0 auto;
-  padding: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
   border: 1px solid #ccc;
   border-radius: 10px;
   background-color: #f9f9f9;
 `
 
 export const Title = styled.h1`
-  font-size: 2rem;
-  color: #4CAF50; /* Custom primary color */
-  text-align: center;
+  font-size: 2.5rem;
+  color: var(--primary);
+  text-align: left;
   margin-bottom: 20px;
-`;
+  padding-top: 20px;
+`

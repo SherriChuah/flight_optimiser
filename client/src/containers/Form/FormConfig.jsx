@@ -1,6 +1,6 @@
 import { checkValidateTab, errorMessages } from '../../errorChecking/validationCheck';
 
-export const getFormValidation = (setDestinationValue, destinationValue) => {
+export const getFormValidation = (setDestinationValue, destinationValue, setTravelDates) => {
     return {
         STEP_1: {
             // attributes: {},
@@ -8,6 +8,8 @@ export const getFormValidation = (setDestinationValue, destinationValue) => {
         },
         STEP_2: {
             attributes: {isValid: checkValidateTab(destinationValue), validationError: errorMessages},
+            function: setTravelDates
+
             
         },
         STEP_3: {
