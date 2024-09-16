@@ -1,33 +1,15 @@
 import React from 'react';
 import { createColumnHelper } from '@tanstack/react-table';
+import { ButtonContainer, EditButton, DeleteButton } from './PeopleDetailsStyle';
 
-
-export const passengersList = () => [
-    // {
-    //     group: 'Mandy',
-    //     originAirport: 'manchester',
-    //     departAfter: '7:00am',
-    //     arriveBefore: '7:00pm',
-    //     cabinClass: 'Economy',
-    //     directFlight: 'True',
-    // },
-    // {
-    //     group: 'Mandy',
-    //     originAirport: 'manchester',
-    //     departAfter: '7:00am',
-    //     arriveBefore: '7:00pm',
-    //     cabinClass: 'Economy',
-    //     directFlight: 'True',
-    // }
-];
 
 export const columnHelper = createColumnHelper({});
 
-export const columns = [
+export const columns = ({handleDelete, navigate}) => [
     columnHelper.accessor(row => row.id, {
         id: 'id',
         cell: info => <i>{info.getValue()}</i>,
-        header: () => 'id'
+        header: () => 'ID'
     }),
     columnHelper.accessor('group', {
     //   cell: info => info.getValue(),
@@ -48,5 +30,13 @@ export const columns = [
     }),
     columnHelper.accessor('directFlight', {
         header: () => 'Direct Flight'
-    })
+    }),
+    columnHelper.accessor('editDelete', {
+      header: '',
+      cell: ({row}) => (
+        <ButtonContainer>
+          <EditButton onClick={() => navigate(`/edit/${row.id}`, { state: { row } })}>Edit</EditButton>
+          <DeleteButton onClick={() => handleDelete(row.id)}>X</DeleteButton>
+        </ButtonContainer>),
+    }),
 ];
