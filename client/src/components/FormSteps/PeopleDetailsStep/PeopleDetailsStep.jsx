@@ -9,7 +9,7 @@ import { AddOrEditBooking } from './PeopleDetailsEdit';
 import axios from 'axios';
 
 export const PeopleDetailsStep = () => {
-    const [airports, setAirports] = useState([]);
+    // const [airports, setAirports] = useState([]);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -19,18 +19,18 @@ export const PeopleDetailsStep = () => {
     // // State to hold the data for the row being edited
     const [editingRowData, setEditingRowData] = useState(null);
     
-    useEffect(() => {
-      const fetchData = async () => {
-          try {
-              const response = await axios.get('http://127.0.0.1:8080/airportcodes');
-              setAirports(response.data);
+    // useEffect(() => {
+    //   const fetchData = async () => {
+    //       try {
+    //           const response = await axios.get('http://127.0.0.1:8080/airportcodes');
+    //           setAirports(response.data);
               
-          } catch (error) {
-              console.error("Error fetching the data", error);
-          }
-      };
-      fetchData();
-    }, []);
+    //       } catch (error) {
+    //           console.error("Error fetching the data", error);
+    //       }
+    //   };
+    //   fetchData();
+    // }, []);
 
     const handleAddNewEntry = () => {
       setEditingRowData(null); // No data means we are adding a new entry
