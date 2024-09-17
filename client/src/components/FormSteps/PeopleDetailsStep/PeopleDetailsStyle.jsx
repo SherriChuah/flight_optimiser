@@ -58,15 +58,6 @@ export const Button = styled.button`
   margin-bottom: 10px;
 `;
 
-export const FormStyle = styled.div`
-    width: 400px;  // You can adjust this size as needed
-    padding: 20px;
-    background-color: white;
-    borderRadius: 8px;
-    boxShadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    zIndex: 1001;  // Ensure the modal is above the overlay
-`
-
 export const PopUpStyle = styled.div`
     position: fixed;
     top: 0;
@@ -81,8 +72,17 @@ export const PopUpStyle = styled.div`
 
 export const PopUpInnerStyle = styled.div`
     position: relative;
-    padding: 32px;
+    padding: 20px;
     width: 60%;
     height: 70%;
     background-color: var(--white);
+`
+
+export const PopUpTitle = styled.h1`
+  font-size: 2rem;
+  color: var(--primary);
+  text-align: left;
+  margin-bottom: 20px;
+  margin-left: 25px;
+  padding-top: 5px;
 `

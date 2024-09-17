@@ -1,15 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { FormStyle, PopUpStyle, PopUpInnerStyle } from './PeopleDetailsStyle';
+import { PopUpTitle, PopUpStyle, PopUpInnerStyle } from './PeopleDetailsStyle';
+
+import axios from 'axios';
+
+
 
 export const AddOrEditBooking = ({ openOrClose, onSave, onClose, rowData }) => {
-    const { register, handleSubmit, reset, formState: { errors } } = useForm({
-        defaultValues: {
-            name: '',
-            email: ''
-        }
-    });
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const [airports, setAirports] = useState([]);
+
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await axios.get('http://127.0.0.1:8080/airportcodes');
+    //             setAirports(response.data);
+                
+    //         } catch (error) {
+    //             console.error("Error fetching the data", error);
+    //         }
+    //     };
+    //     fetchData();
+    // }, []);
 
     // UseEffect to reset the form when editing an existing row
     useEffect(() => {
@@ -33,31 +46,25 @@ export const AddOrEditBooking = ({ openOrClose, onSave, onClose, rowData }) => {
     return (openOrClose) ? (
         <PopUpStyle>
             <PopUpInnerStyle>
-                <h2>{rowData ? 'Edit Entry' : 'Add New Entry'}</h2>
+                <PopUpTitle>{rowData ? 'Edit Entry' : 'Add New Entry'}</PopUpTitle>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div>
-                        <label>Group:</label>
-                        <input
-                            type="text"
-                            {...register('name', { required: 'Name is required' })}
-                        />
-                        {errors.name && <p style={{ color: 'red' }}>{errors.name.message}</p>}
-                    </div>
-
-                    <div>
-                        <label>Email:</label>
-                        <input
-                            type="email"
-                            {...register('email', {
-                                required: 'Email is required',
-                                pattern: {
-                                    value: /^\S+@\S+$/i,
-                                    message: 'Invalid email address'
-                                }
-                            })}
-                        />
-                        {errors.email && <p style={{ color: 'red' }}>{errors.email.message}</p>}
-                    </div>
+                    <input {...register("group", { required: 'Name is required' })} placeholder="Group Name" />
+                    <select {...register("originAirport", { required: true })} placeholder="Origin Airport" >
+                        {airports.map(airport => {
+                            <option value={airport.iata}>{airport}</option>
+                        })}
+                    </select>
+                    <select {...register("departBefore")}>
+                        <option value="">Depart Before...</option>
+                        <option value="6am">6 am</option>
+                    </select>
+                    <select {...register("arriveBefore")}>
+                        <option value="">Arrive Before...</option>
+                        <option value="6am">6 am</option>
+                    </select>
+                    <input  {...register("direct", { required: true })} type="radio" value="Yes"/>
+                    <input  {...register("direct", { required: true })} type="radio" value="No"/>
+                
 
                     <div>
                         <button type="submit">Save</button>
