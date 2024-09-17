@@ -5,7 +5,7 @@ import { ButtonContainer, EditButton, DeleteButton } from './PeopleDetailsStyle'
 
 export const columnHelper = createColumnHelper({});
 
-export const columns = ({handleDelete, navigate}) => [
+export const columns = ({handleDelete, handleEditEntry}) => [
     columnHelper.accessor(row => row.id, {
         id: 'id',
         cell: info => <i>{info.getValue()}</i>,
@@ -35,7 +35,7 @@ export const columns = ({handleDelete, navigate}) => [
       header: '',
       cell: ({row}) => (
         <ButtonContainer>
-          <EditButton onClick={() => navigate(`/edit/${row.id}`, { state: { row } })}>Edit</EditButton>
+          <EditButton onClick={() => handleEditEntry(`/edit/${row.id}`, { state: { row } })}>Edit</EditButton>
           <DeleteButton onClick={() => handleDelete(row.id)}>X</DeleteButton>
         </ButtonContainer>),
     }),
