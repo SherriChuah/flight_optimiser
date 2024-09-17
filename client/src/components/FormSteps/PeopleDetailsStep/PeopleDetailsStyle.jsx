@@ -47,3 +47,13 @@ export const DeleteButton = styled.button`
   padding: 5px 10px;
   cursor: pointer;
 `;
+
+export const Button = styled.button`
+  background-color: #4B0066;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  height: 20%;
+  margin-bottom: 10px;
+`;

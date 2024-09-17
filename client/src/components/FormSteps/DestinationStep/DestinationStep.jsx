@@ -30,7 +30,7 @@ export const DestinationStep = ({step, inputValidation, goToTab, inputValues}) =
         fetchData();
     }, []);
 
-
+    
     const getHighlightedParts = (text, inputValue) => {
         const matches = match(text, inputValue, { insideWords: true });
         return parse(text, matches);

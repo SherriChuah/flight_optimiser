@@ -1,53 +1,61 @@
-import React, {  } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table';
 import { columns as createColumns } from './PeopleListTableConfig';
-import { Table, Th, Td, Tr } from './PeopleDetailsStyle';
+import { Table, Th, Td, Tr, Button } from './PeopleDetailsStyle';
 import { Booking } from '../../../data/passengerDataModel';
 
+import axios from 'axios';
 
 export const PeopleDetailsStep = () => {
-  new Booking({
-    id: 1,
-    group: 'She, Nik',
-    originAirport: 'Manchester',
-    departAfter: '7:00am',
-    arriveBefore: '12:00am',
-    cabinClass: 'Economy',
-    direct: true,
-  });
-  const [data, _setData] = React.useState(Booking.getBookings().length === 0 ? [] : Booking.getBookings());
+    const [airports, setAirports] = useState([]);
+    
+    useEffect(() => {
+      const fetchData = async () => {
+          try {
+              const response = await axios.get('http://127.0.0.1:8080/airportcodes');
+              console.log(response.data);
+              setAirports(response.data);
+              
+          } catch (error) {
+              console.error("Error fetching the data", error);
+          }
+      };
+      fetchData();
+    }, []);
 
-  const navigate = useNavigate();
+    const [data, _setData] = React.useState(Booking.getBookings().length === 0 ? [] : Booking.getBookings());
 
-  const handleDelete = (id) => {
-    Booking.deleteBooking(id);
-    setBookings(Booking.bookingsList); 
-  };
+    const navigate = useNavigate();
 
-  const columns = createColumns({handleDelete, navigate});
+    const handleDelete = (id) => {
+      Booking.deleteBooking(id);
+      setBookings(Booking.bookingsList); 
+    };
 
-  const table = useReactTable({
-      data,
-      columns,
-      getCoreRowModel: getCoreRowModel(),
-  });
+    const columns = createColumns({handleDelete, navigate});
 
-  // const addBooking = (newBookingData) => {
-  //   try {
-  //     // Create a new Booking instance and validate
-  //     const newBooking = new Booking(newBookingData, airports); 
-  //     setBookings([...bookings, newBooking]); // Add to the local state of bookings
-  //   } catch (error) {
-  //     console.error(error.message); // Handle validation errors
-  //   }
-  // };
+    const table = useReactTable({
+        data,
+        columns,
+        getCoreRowModel: getCoreRowModel(),
+    });
 
-  
+    // const addBooking = (newBookingData) => {
+    //   try {
+    //     // Create a new Booking instance and validate
+    //     const newBooking = new Booking(newBookingData, airports); 
+    //     setBookings([...bookings, newBooking]); // Add to the local state of bookings
+    //   } catch (error) {
+    //     console.error(error.message); // Handle validation errors
+    //   }
+    // };
 
-  return (
+    
+
+    return (
       <div >
-        <button onClick={() => navigate(`/edit/${data.length + 1}`)}>Add new entry</button>
+        <Button onClick={() => navigate(`/edit/${data.length + 1}`)}>Add new entry</Button>
         <Table>
           <thead>
             {table.getHeaderGroups().map(headerGroup => (
