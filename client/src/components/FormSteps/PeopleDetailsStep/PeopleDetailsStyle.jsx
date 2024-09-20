@@ -110,8 +110,8 @@ export const TwoColumn = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 2%;
-  margin-left: 25px;
-  margin-right: 25px;
+  margin-left: 21px;
+  margin-right: 21px;
 `
 
 export const SplitSelect = styled.select`
@@ -121,4 +121,12 @@ export const SplitSelect = styled.select`
   padding: 10px 15px;
   margin-bottom: 10px;
   font-size: 14px;
+`
+
+export const LabelDiv = styled.div`
+  padding: 10px 15px;
+`
+
+export const Label = styled.label`
+  margin: 40px;
 `

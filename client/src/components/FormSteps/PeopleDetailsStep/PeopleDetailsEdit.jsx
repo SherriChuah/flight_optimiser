@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { PopUpTitle, PopUpStyle, PopUpInnerStyle, Input, Select, TwoColumn, SplitSelect } from './PeopleDetailsStyle';
+import { PopUpTitle, PopUpStyle, PopUpInnerStyle, Input, Select, TwoColumn, SplitSelect, Label } from './PeopleDetailsStyle';
 
 import axios from 'axios';
 
@@ -73,10 +73,15 @@ export const AddOrEditBooking = ({ openOrClose, onSave, onClose, rowData }) => {
                         <option value="business">Business</option>
                     </Select>
 
-                    <Input {...register("direct", { required: true })} type="radio" value="Direct" />
-                    <Input  {...register("direct", { required: true })} type="radio" value="Indirect" />
-                
-
+                    <Label>
+                        Direct 
+                        <input {...register("direct", { required: true })} type="radio" value="Direct" />
+                    </Label>
+                    <Label>
+                        Indirect
+                        <input  {...register("direct", { required: true })} type="radio" value="Indirect" />
+                    </Label>                  
+        
                     <div>
                         <input type="submit"/>
                         <button type="button" onClick={handleClose}>Cancel</button>
