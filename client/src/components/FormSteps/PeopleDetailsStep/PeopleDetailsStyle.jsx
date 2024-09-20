@@ -84,5 +84,41 @@ export const PopUpTitle = styled.h1`
   text-align: left;
   margin-bottom: 20px;
   margin-left: 25px;
+  margin-right: 25px;
   padding-top: 5px;
+`
+
+export const Input = styled.input`
+  width: 90%;
+  border-radius: 4px;
+  border: 1px solid black;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  font-size: 14px;
+`
+
+export const Select = styled.select`
+  width: 90%;
+  border-radius: 4px;
+  border: 1px solid black;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  font-size: 14px;
+`
+
+export const TwoColumn = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+  margin-left: 25px;
+  margin-right: 25px;
+`
+
+export const SplitSelect = styled.select`
+  width: 49%;
+  border-radius: 4px;
+  border: 1px solid black;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  font-size: 14px;
 `
