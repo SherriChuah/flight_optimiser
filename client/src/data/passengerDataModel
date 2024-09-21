@@ -1,74 +1,75 @@
-export class Booking {
+export class PeopleSearchDetails {
     static lastId = 0;
 
-    static bookingsList = [];
+    static PeopleSearchDetailsList = [];
 
-    constructor({ group, originAirport, departAfter, arriveBefore, cabinClass, direct }, validAirports) {
+    constructor(props) {
         this.id = this.generateId();
-        this.group = this.validateGroup(group);
-        this.originAirport = this.validateAirport(originAirport, validAirports);
-        this.departAfter = this.validateTime(departAfter);
-        this.arriveBefore = this.validateTime(arriveBefore);
-        this.cabinClass = this.validateCabinClass(cabinClass);
-        this.directFlight = this.validateDirect(direct);
+        this.group = props.group;
+        this.originAirport = props.originAirport;
+        this.departAfter = props.departAfter;
+        this.arriveBefore = props.arriveBefore;
+        this.cabinClass = props.cabinClass;
+        this.directFlight = props.directFlight;
 
-        Booking.bookingsList.push(this);
+        PeopleSearchDetails.PeopleSearchDetailsList.push(this);
     }
 
     generateId() {
-        Booking.lastId += 1;
-        return Booking.lastId;
+        PeopleSearchDetails.lastId += 1;
+        return PeopleSearchDetails.lastId;
     }
 
-    validateGroup(group) {
-        if (typeof group !== 'string' || group.trim() === '') {
-        throw new Error('Invalid group. It should be a non-empty string.');
-        }
-        return group;
-    }
+    // validateGroup(group) {
+    //     if (typeof group !== 'string' || group.trim() === '') {
+    //     throw new Error('Invalid group. It should be a non-empty string.');
+    //     }
+    //     return group;
+    // }
 
-    validateAirport(airport, validAirports) {
-        if (!validAirports.includes(airport)) {
-          throw new Error(`Invalid origin airport. Choose from: ${validAirports.join(', ')}`);
-        }
-        return airport;
-      }
+    // validateAirport(airport, validAirports) {
+    //     console.log('inside', validAirports);
+    //     if (!validAirports.includes(airport)) {
+    //       throw new Error(`Invalid origin airport. Choose from: ${validAirports.join(', ')}`);
+    //     }
+    //     return airport;
+    //   }
 
-    validateTime(time) {
-        const timeFormat = /^(0?[1-9]|1[0-2]):[0-5][0-9](am|pm)$/i;
-        if (!timeFormat.test(time)) {
-        throw new Error('Invalid time format. Use "hh:mmam" or "hh:mmpm".');
-        }
-        return time;
-    }
+    // validateTime(time) {
+    //     const timeFormat = /^(0?[1-9]|1[0-2]):[0-5][0-9](am|pm)$/i;
+    //     if (!timeFormat.test(time)) {
+    //     throw new Error('Invalid time format. Use "hh:mmam" or "hh:mmpm".');
+    //     }
+    //     return time;
+    // }
 
-    validateCabinClass(cabinClass) {
-        const validClasses = ['Economy', 'Business', 'First Class'];
-        if (!validClasses.includes(cabinClass)) {
-        throw new Error(`Invalid cabin class. Choose from: ${validClasses.join(', ')}`);
-        }
-        return cabinClass;
-    }
+    // validateCabinClass(cabinClass) {
+    //     const validClasses = ['Economy', 'Business', 'First Class'];
+    //     if (!validClasses.includes(cabinClass)) {
+    //     throw new Error(`Invalid cabin class. Choose from: ${validClasses.join(', ')}`);
+    //     }
+    //     return cabinClass;
+    // }
 
-    validateDirect(direct) {
-        if (typeof direct !== 'boolean') {
-        throw new Error('Invalid value for direct. It should be true or false.');
-        }
-        return direct;
-    }
+    // validateDirect(direct) {
+    //     if (typeof direct !== 'boolean') {
+    //     throw new Error('Invalid value for direct. It should be true or false.');
+    //     }
+    //     return direct;
+    // }
 
     static deleteBooking(id) {
-        const index = Booking.bookingsList.findIndex((booking) => booking.id === id);
+        const index = PeopleSearchDetails.PeopleSearchDetailsList.findIndex((item) => item.id === id);
 
         if (index !== -1) {
-        Booking.bookingsList.splice(index, 1);
-        console.log(`Booking with id ${id} deleted.`);
+            PeopleSearchDetails.PeopleSearchDetailsList.splice(index, 1);
+        console.log(`People search details with id ${id} deleted.`);
         } else {
-        console.error(`Booking with id ${id} not found.`);
+        console.error(`People search details with id ${id} not found.`);
         }
     }
 
-    static getBookings() {
-        return Booking.bookingsList;
+    static getDetails() {
+        return PeopleSearchDetails.PeopleSearchDetailsList;
     }
 }

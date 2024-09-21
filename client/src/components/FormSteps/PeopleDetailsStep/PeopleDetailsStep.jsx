@@ -3,42 +3,26 @@ import React, { useState, useEffect } from 'react';
 import { useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table';
 import { columns as createColumns } from './PeopleListTableConfig';
 import { Table, Th, Td, Tr, Button } from './PeopleDetailsStyle';
-import { Booking } from '../../../data/passengerDataModel';
+import { PeopleSearchDetails } from '../../../data/passengerDataModel';
 import { AddOrEditBooking } from './PeopleDetailsEdit';
 
 import axios from 'axios';
 
 export const PeopleDetailsStep = () => {
-    // const [airports, setAirports] = useState([]);
-
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    // // State to store the form data (both new and edited data)
-    // const [formData, setFormData] = useState([]);
+    const [peopleDetails, setPeopleDetails] = React.useState([]);
 
-    // // State to hold the data for the row being edited
-    const [editingRowData, setEditingRowData] = useState(null);
-    
     // useEffect(() => {
-    //   const fetchData = async () => {
-    //       try {
-    //           const response = await axios.get('http://127.0.0.1:8080/airportcodes');
-    //           setAirports(response.data);
-              
-    //       } catch (error) {
-    //           console.error("Error fetching the data", error);
-    //       }
-    //   };
-    //   fetchData();
-    // }, []);
+    //   if (PeopleSearchDetails.lastId) {
+    //     setPeopleDetails([]); // or some other logic if needed
+    //   } else {
+    //     setPeopleDetails(PeopleSearchDetails.getDetails());
+    //   }
+    // }, [PeopleSearchDetails.lastId]);
 
-    const handleAddNewEntry = () => {
-      setEditingRowData(null); // No data means we are adding a new entry
-      setIsModalOpen(true);
-
-      console.log(editingRowData, isModalOpen)
-    };
-
+    const [editingRowData, setEditingRowData] = useState(null);
+   
     const handleEditEntry = (row) => {
       setEditingRowData(row); // Pass the existing row data for editing
       setIsModalOpen(true);
@@ -49,21 +33,10 @@ export const PeopleDetailsStep = () => {
     };
 
     const handleSave = (data) => {
-        // if (editingRowData) {
-        //     const updatedData = formData.map((item) =>
-        //         item.id === editingRowData.id ? data : item
-        //     );
-        //     setFormData(updatedData);
-        // } else {
-        //     setFormData([...formData, { ...data, id: Date.now() }]);
-        // }
+        const newEntry = new PeopleSearchDetails(data); 
+        setPeopleDetails([...peopleDetails, newEntry])
         setIsModalOpen(false);
     };
-
-
-    const [data, _setData] = React.useState(Booking.getBookings().length === 0 ? [] : Booking.getBookings());
-
-    // const navigate = useNavigate();
 
     const handleDelete = (id) => {
       Booking.deleteBooking(id);
@@ -73,7 +46,7 @@ export const PeopleDetailsStep = () => {
     const columns = createColumns({handleDelete, handleEditEntry});
 
     const table = useReactTable({
-        data,
+        data: peopleDetails,
         columns,
         getCoreRowModel: getCoreRowModel(),
     });
@@ -92,7 +65,7 @@ export const PeopleDetailsStep = () => {
 
     return (
       <div >
-        <Button onClick={() => setIsModalOpen(true)}>Add new entry</Button>
+        <Button onClick={() => setIsModalOpen(true)}>Add Entry</Button>
 
         {isModalOpen && <AddOrEditBooking 
             openOrClose={isModalOpen}
@@ -121,11 +94,23 @@ export const PeopleDetailsStep = () => {
           <tbody>
             {table.getRowModel().rows.map(row => (
               <Tr key={row.id}>
-                {row.getVisibleCells().map(cell => (
-                  <Td key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </Td>
-                ))}
+                {row.getVisibleCells().map(cell => {
+                  
+                  if (cell.column.id === 'originAirport') {
+                    const value = cell.getValue();
+
+                    return (
+                      <Td key={cell.id}>
+                        {`${value.airport_name} (${value.iata})`}
+                      </Td>
+                    );
+                  }
+
+                  return (<Td key={cell.id}>
+                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                </Td>)
+
+                })}
               </Tr>
             ))}
           </tbody>

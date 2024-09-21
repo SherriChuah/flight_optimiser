@@ -69,7 +69,7 @@ export const AddOrEditBooking = ({ openOrClose, onSave, onClose, rowData }) => {
 
                     <Center>
                         <Controller
-                            name="originAiport"
+                            name="originAirport"
                             control={control}
                             rules={{ required: 'Please select origin airport.' }}
                             render={({ field }) => (
@@ -127,7 +127,7 @@ export const AddOrEditBooking = ({ openOrClose, onSave, onClose, rowData }) => {
                             )}
                         />
                     </Center>
-                    {errors.originAiport && <Error>{errors.originAiport.message}</Error>}
+                    {errors.originAirport && <Error>{errors.originAirport.message}</Error>}
 
 
                     <FourColumn>
@@ -150,14 +150,14 @@ export const AddOrEditBooking = ({ openOrClose, onSave, onClose, rowData }) => {
                     <DirectIndirectDiv>
                         <Label>
                             Direct 
-                            <input {...register("direct", { required: 'Please select direct or indirect flight.' })} type="radio" value="direct" />
+                            <input {...register("directFlight", { required: 'Please select direct or indirect flight.' })} type="radio" value="direct" />
                         </Label>
                         <Label>
                             Indirect
-                            <input  {...register("direct", { required: 'Please select direct or indirect flight.' })} type="radio" value="indirect" />
+                            <input  {...register("directFlight", { required: 'Please select direct or indirect flight.' })} type="radio" value="indirect" />
                         </Label>  
                     </DirectIndirectDiv>
-                    {errors.direct && <Error>{errors.direct.message}</Error>} 
+                    {errors.directFlight && <Error>{errors.directFlight.message}</Error>} 
                                   
         
                     <ButtonGroupDiv>
