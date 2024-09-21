@@ -1,19 +1,21 @@
+import { PeopleEntryClass } from './peopleEntryDataModel'
+
 export class PeopleSearchDetails {
     static lastId = 0;
 
     static PeopleSearchDetailsList = [];
 
-    constructor(props) {
-        this.id = this.generateId();
-        this.group = props.group;
-        this.originAirport = props.originAirport;
-        this.departAfter = props.departAfter;
-        this.arriveBefore = props.arriveBefore;
-        this.cabinClass = props.cabinClass;
-        this.directFlight = props.directFlight;
+    // constructor(props) {
+    //     this.id = this.generateId();
+    //     this.group = props.group;
+    //     this.originAirport = props.originAirport;
+    //     this.departAfter = props.departAfter;
+    //     this.arriveBefore = props.arriveBefore;
+    //     this.cabinClass = props.cabinClass;
+    //     this.directFlight = props.directFlight;
 
-        PeopleSearchDetails.PeopleSearchDetailsList.push(this);
-    }
+    //     PeopleSearchDetails.PeopleSearchDetailsList.push(this);
+    // }
 
     generateId() {
         PeopleSearchDetails.lastId += 1;
@@ -58,15 +60,25 @@ export class PeopleSearchDetails {
     //     return direct;
     // }
 
-    static deleteBooking(id) {
-        const index = PeopleSearchDetails.PeopleSearchDetailsList.findIndex((item) => item.id === id);
+    static deleteEntry(id) {
+        const index = PeopleSearchDetails.PeopleSearchDetailsList.findIndex((item) => {
+            if (item.id == id + 1) {
+                return item.id;
+            }
+        });
 
         if (index !== -1) {
             PeopleSearchDetails.PeopleSearchDetailsList.splice(index, 1);
-        console.log(`People search details with id ${id} deleted.`);
+            console.log(`People search details with id ${id} deleted.`);
         } else {
-        console.error(`People search details with id ${id} not found.`);
+            console.error(`People search details with id ${id} not found.`);
         }
+    }
+
+    static addEntry(data) {
+        const newEntry = new PeopleEntryClass(data);
+        PeopleSearchDetails.PeopleSearchDetailsList.push(newEntry)
+        return newEntry;
     }
 
     static getDetails() {

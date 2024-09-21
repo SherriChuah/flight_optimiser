@@ -3,23 +3,15 @@ import React, { useState, useEffect } from 'react';
 import { useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table';
 import { columns as createColumns } from './PeopleListTableConfig';
 import { Table, Th, Td, Tr, Button } from './PeopleDetailsStyle';
-import { PeopleSearchDetails } from '../../../data/passengerDataModel';
-import { AddOrEditBooking } from './PeopleDetailsEdit';
+import { PeopleSearchDetails } from '../../../data/peopleDataModel';
+import { AddOrEditDetails } from './PeopleDetailsEdit';
 
 import axios from 'axios';
 
-export const PeopleDetailsStep = () => {
+export const PeopleDetailsStep = ({inputValues}) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const [peopleDetails, setPeopleDetails] = React.useState([]);
-
-    // useEffect(() => {
-    //   if (PeopleSearchDetails.lastId) {
-    //     setPeopleDetails([]); // or some other logic if needed
-    //   } else {
-    //     setPeopleDetails(PeopleSearchDetails.getDetails());
-    //   }
-    // }, [PeopleSearchDetails.lastId]);
 
     const [editingRowData, setEditingRowData] = useState(null);
    
@@ -33,14 +25,26 @@ export const PeopleDetailsStep = () => {
     };
 
     const handleSave = (data) => {
-        const newEntry = new PeopleSearchDetails(data); 
+        
+        console.log('Before save');
+        console.log(PeopleSearchDetails.PeopleSearchDetailsList)
+        const newEntry = PeopleSearchDetails.addEntry(data);
+        
         setPeopleDetails([...peopleDetails, newEntry])
-        setIsModalOpen(false);
+        
+        console.log('After save');
+        console.log(PeopleSearchDetails.PeopleSearchDetailsList)
+
+        handleCloseModal();
     };
 
     const handleDelete = (id) => {
-      Booking.deleteBooking(id);
-      setBookings(Booking.bookingsList); 
+      console.log('Before save');
+      console.log(PeopleSearchDetails.PeopleSearchDetailsList)
+      PeopleSearchDetails.deleteEntry(id);
+      console.log('after delete');
+      console.log(PeopleSearchDetails.PeopleSearchDetailsList)
+      setPeopleDetails(PeopleSearchDetails.PeopleSearchDetailsList); 
     };
 
     const columns = createColumns({handleDelete, handleEditEntry});
@@ -61,17 +65,16 @@ export const PeopleDetailsStep = () => {
     //   }
     // };
 
-    
-
     return (
       <div >
         <Button onClick={() => setIsModalOpen(true)}>Add Entry</Button>
 
-        {isModalOpen && <AddOrEditBooking 
+        {isModalOpen && <AddOrEditDetails 
             openOrClose={isModalOpen}
             onSave={handleSave} 
             onClose={handleCloseModal}
-            rowData={editingRowData}  // Pass row data if editing
+            rowData={editingRowData} 
+            autocompleteValue={inputValues[0]} // Pass row data if editing
         />}
 
         <Table>
@@ -95,7 +98,6 @@ export const PeopleDetailsStep = () => {
             {table.getRowModel().rows.map(row => (
               <Tr key={row.id}>
                 {row.getVisibleCells().map(cell => {
-                  
                   if (cell.column.id === 'originAirport') {
                     const value = cell.getValue();
 
@@ -105,11 +107,9 @@ export const PeopleDetailsStep = () => {
                       </Td>
                     );
                   }
-
-                  return (<Td key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </Td>)
-
+                  else {
+                    return <Td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</Td>
+                  }
                 })}
               </Tr>
             ))}

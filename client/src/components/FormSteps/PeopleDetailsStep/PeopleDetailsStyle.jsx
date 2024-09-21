@@ -26,7 +26,7 @@ export const Tr = styled.tr`
   }
 `;
 
-export const ButtonContainer = styled.td`
+export const ButtonContainer = styled.div`
   text-align: center;
 `;
 

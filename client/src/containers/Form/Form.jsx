@@ -15,6 +15,7 @@ export const Form = () => {
           key: 'selection'
         }
       ]);
+    const [peopleDetails, setPeopleDetails] = useState([]); // TODO: Modify config to ensure thattable data is remembered
 
 
     const handleComplete = () => {
@@ -90,7 +91,7 @@ export const Form = () => {
                             step={step} 
                             inputValidation={[handleInputChange, FORM_VALIDATION[step]?.function ?? defaultFunction]} 
                             goToTab={goToTab}
-                            inputValues={index == 0 ? [destinationValue] : index == 1 ? travelDates : null}
+                            inputValues={index == 0 ? [destinationValue] : index == 1 ? travelDates : ''}
                         /></FormWizard.TabContent>
                     );
                 })}

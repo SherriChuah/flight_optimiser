@@ -14,7 +14,7 @@ import axios from 'axios';
 
 
 
-export const AddOrEditBooking = ({ openOrClose, onSave, onClose, rowData }) => {
+export const AddOrEditDetails = ({ openOrClose, onSave, onClose, rowData, autocompleteValue }) => {
     const { control, register, handleSubmit, reset, formState: { errors } } = useForm();
     const [airports, setAirports] = useState([]);
     const [inputValue, setInputValue] = useState('');
@@ -45,7 +45,6 @@ export const AddOrEditBooking = ({ openOrClose, onSave, onClose, rowData }) => {
 
     // Handle form submission
     const onSubmit = (data) => {
-        console.log(data);
         onSave(data); // Pass the form data back to the parent component
     };
 
@@ -84,6 +83,7 @@ export const AddOrEditBooking = ({ openOrClose, onSave, onClose, rowData }) => {
                                         }
                                     
                                     }
+                                    value={autocompleteValue}
                                     options={airports}
                                     noOptionsText='No option'
                                     renderInput={
