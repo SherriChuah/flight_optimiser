@@ -94,12 +94,12 @@ export const PeopleDetailsStep = () => {
       <div >
         <Button onClick={() => setIsModalOpen(true)}>Add new entry</Button>
 
-        <AddOrEditBooking 
+        {isModalOpen && <AddOrEditBooking 
             openOrClose={isModalOpen}
             onSave={handleSave} 
             onClose={handleCloseModal}
             rowData={editingRowData}  // Pass row data if editing
-        />
+        />}
 
         <Table>
           <thead>

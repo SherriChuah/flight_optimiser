@@ -41,9 +41,9 @@ export const DestinationStep = ({step, inputValidation, goToTab, inputValues}) =
         <div>
             <Heading>Where to next?</Heading>
             
-            {FORM_CONTENT[step].map(item => (
+            {FORM_CONTENT[step].map((index, item) => (
 
-                <InputBox>
+                <InputBox key={index}>
                     <Autocomplete
                         id={`${step}`}
                         sx={{ width: 350 }}

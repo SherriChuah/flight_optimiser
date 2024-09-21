@@ -83,6 +83,7 @@ export const Form = () => {
                     const StepComponent = STEP_INFO[step].content;
                     return (
                         <FormWizard.TabContent
+                            key={step}
                             title={STEP_INFO[step] && STEP_INFO[step].progress_title}
                             {...FORM_VALIDATION[step]['attributes']}
                         ><StepComponent 
