@@ -52,30 +52,34 @@ export const Button = styled.button`
   background-color: var(--primary);
   color: var(--white);
   border: none;
-  padding: 5px 10px;
+  padding: 5px 15px;
   cursor: pointer;
   height: 20%;
   margin: 10px;
+  border-radius: 4px;
 `;
 
 export const Submit = styled.input`
   background-color: var(--primary);
   color: var(--white);
   border: none;
-  padding: 5px 10px;
+  padding: 10px 25px;
   cursor: pointer;
   height: 20%;
   margin: 10px;
+  border-radius: 4px;
 `;
 
 export const Cancel = styled.button`
   background-color: var(--gray);
   color: var(--black);
   border: none;
-  padding: 5px 10px;
+  padding: 10px 25px;
   cursor: pointer;
   height: 20%;
   margin: 10px;
+  border-radius: 4px;
+  
 `;
 
 export const PopUpStyle = styled.div`
@@ -96,6 +100,7 @@ export const PopUpInnerStyle = styled.div`
     width: 60%;
     height: 70%;
     background-color: var(--white);
+    border-radius: 4px;
 `
 
 export const PopUpTitle = styled.h1`
@@ -163,5 +168,9 @@ export const DirectIndirectDiv = styled.div`
 `
 
 export const ButtonGroupDiv = styled.div`
-  padding-top: 15px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%; /* Move to the center horizontally */
+  transform: translateX(-50%);
+  
 `

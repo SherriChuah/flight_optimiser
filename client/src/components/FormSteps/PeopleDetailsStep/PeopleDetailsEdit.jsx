@@ -131,8 +131,8 @@ export const AddOrEditBooking = ({ openOrClose, onSave, onClose, rowData }) => {
 
 
                     <FourColumn>
-                        <SplitSelect {...register("departBefore")}>
-                            <option value="">Depart Before...</option>
+                        <SplitSelect {...register("departAfter")}>
+                            <option value="">Depart After...</option>
                             {generateTimeOptions()}
                         </SplitSelect>
                         <SplitSelect {...register("arriveBefore")}>
@@ -150,11 +150,11 @@ export const AddOrEditBooking = ({ openOrClose, onSave, onClose, rowData }) => {
                     <DirectIndirectDiv>
                         <Label>
                             Direct 
-                            <input {...register("direct", { required: 'Please select direct or indirect flight.' })} type="radio" value="Direct" />
+                            <input {...register("direct", { required: 'Please select direct or indirect flight.' })} type="radio" value="direct" />
                         </Label>
                         <Label>
                             Indirect
-                            <input  {...register("direct", { required: 'Please select direct or indirect flight.' })} type="radio" value="Indirect" />
+                            <input  {...register("direct", { required: 'Please select direct or indirect flight.' })} type="radio" value="indirect" />
                         </Label>  
                     </DirectIndirectDiv>
                     {errors.direct && <Error>{errors.direct.message}</Error>} 
