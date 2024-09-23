@@ -6,8 +6,6 @@ import { Table, Th, Td, Tr, Button } from './PeopleDetailsStyle';
 import { PeopleSearchDetails } from '../../../data/peopleDataModel';
 import { AddOrEditDetails } from './PeopleDetailsEdit';
 
-import axios from 'axios';
-
 export const PeopleDetailsStep = ({inputValues}) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -25,26 +23,14 @@ export const PeopleDetailsStep = ({inputValues}) => {
     };
 
     const handleSave = (data) => {
-        
-        console.log('Before save');
-        console.log(PeopleSearchDetails.PeopleSearchDetailsList)
         const newEntry = PeopleSearchDetails.addEntry(data);
-        
         setPeopleDetails([...peopleDetails, newEntry])
-        
-        console.log('After save');
-        console.log(PeopleSearchDetails.PeopleSearchDetailsList)
-
         handleCloseModal();
     };
 
     const handleDelete = (id) => {
-      console.log('Before save');
-      console.log(PeopleSearchDetails.PeopleSearchDetailsList)
       PeopleSearchDetails.deleteEntry(id);
-      console.log('after delete');
-      console.log(PeopleSearchDetails.PeopleSearchDetailsList)
-      setPeopleDetails(PeopleSearchDetails.PeopleSearchDetailsList); 
+      setPeopleDetails([...PeopleSearchDetails.PeopleSearchDetailsList]);
     };
 
     const columns = createColumns({handleDelete, handleEditEntry});
@@ -54,16 +40,6 @@ export const PeopleDetailsStep = ({inputValues}) => {
         columns,
         getCoreRowModel: getCoreRowModel(),
     });
-
-    // const addBooking = (newBookingData) => {
-    //   try {
-    //     // Create a new Booking instance and validate
-    //     const newBooking = new Booking(newBookingData, airports); 
-    //     setBookings([...bookings, newBooking]); // Add to the local state of bookings
-    //   } catch (error) {
-    //     console.error(error.message); // Handle validation errors
-    //   }
-    // };
 
     return (
       <div >

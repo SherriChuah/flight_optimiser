@@ -5,64 +5,21 @@ export class PeopleSearchDetails {
 
     static PeopleSearchDetailsList = [];
 
-    // constructor(props) {
-    //     this.id = this.generateId();
-    //     this.group = props.group;
-    //     this.originAirport = props.originAirport;
-    //     this.departAfter = props.departAfter;
-    //     this.arriveBefore = props.arriveBefore;
-    //     this.cabinClass = props.cabinClass;
-    //     this.directFlight = props.directFlight;
-
-    //     PeopleSearchDetails.PeopleSearchDetailsList.push(this);
-    // }
-
-    generateId() {
+    static generateId() {
         PeopleSearchDetails.lastId += 1;
         return PeopleSearchDetails.lastId;
     }
 
-    // validateGroup(group) {
-    //     if (typeof group !== 'string' || group.trim() === '') {
-    //     throw new Error('Invalid group. It should be a non-empty string.');
-    //     }
-    //     return group;
-    // }
-
-    // validateAirport(airport, validAirports) {
-    //     console.log('inside', validAirports);
-    //     if (!validAirports.includes(airport)) {
-    //       throw new Error(`Invalid origin airport. Choose from: ${validAirports.join(', ')}`);
-    //     }
-    //     return airport;
-    //   }
-
-    // validateTime(time) {
-    //     const timeFormat = /^(0?[1-9]|1[0-2]):[0-5][0-9](am|pm)$/i;
-    //     if (!timeFormat.test(time)) {
-    //     throw new Error('Invalid time format. Use "hh:mmam" or "hh:mmpm".');
-    //     }
-    //     return time;
-    // }
-
-    // validateCabinClass(cabinClass) {
-    //     const validClasses = ['Economy', 'Business', 'First Class'];
-    //     if (!validClasses.includes(cabinClass)) {
-    //     throw new Error(`Invalid cabin class. Choose from: ${validClasses.join(', ')}`);
-    //     }
-    //     return cabinClass;
-    // }
-
-    // validateDirect(direct) {
-    //     if (typeof direct !== 'boolean') {
-    //     throw new Error('Invalid value for direct. It should be true or false.');
-    //     }
-    //     return direct;
-    // }
+    static reindexList(list) {
+        PeopleSearchDetails.PeopleSearchDetailsList =  list.map((item, index) => ({
+            ...item,
+            id: index + 1
+        }));
+    }
 
     static deleteEntry(id) {
         const index = PeopleSearchDetails.PeopleSearchDetailsList.findIndex((item) => {
-            if (item.id == id + 1) {
+            if (item.id == parseInt(id) + 1) {
                 return item.id;
             }
         });
@@ -70,14 +27,18 @@ export class PeopleSearchDetails {
         if (index !== -1) {
             PeopleSearchDetails.PeopleSearchDetailsList.splice(index, 1);
             console.log(`People search details with id ${id} deleted.`);
+            PeopleSearchDetails.lastId -= 1;
+            PeopleSearchDetails.reindexList(PeopleSearchDetails.PeopleSearchDetailsList);
+
         } else {
             console.error(`People search details with id ${id} not found.`);
         }
     }
 
     static addEntry(data) {
+        data['id'] = PeopleSearchDetails.generateId();
         const newEntry = new PeopleEntryClass(data);
-        PeopleSearchDetails.PeopleSearchDetailsList.push(newEntry)
+        PeopleSearchDetails.PeopleSearchDetailsList.push(newEntry);
         return newEntry;
     }
 

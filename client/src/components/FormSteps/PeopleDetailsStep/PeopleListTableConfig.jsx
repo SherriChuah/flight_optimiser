@@ -31,12 +31,22 @@ export const columns = ({handleDelete, handleEditEntry}) => [
     columnHelper.accessor('directFlight', {
         header: () => 'Direct Flight'
     }),
+    // columnHelper.accessor('editDelete', {
+    //   header: '',
+    //   cell: ({row}) => (
+    //     <ButtonContainer>
+    //       <EditButton onClick={() => handleEditEntry(`/edit/${row.id}`, { state: { row } })}>Edit</EditButton>
+    //       <DeleteButton onClick={() => handleDelete(row.id)}>X</DeleteButton>
+    //     </ButtonContainer>)
+    // }),
     columnHelper.accessor('editDelete', {
       header: '',
-      cell: ({row}) => (
-        <ButtonContainer>
-          <EditButton onClick={() => handleEditEntry(`/edit/${row.id}`, { state: { row } })}>Edit</EditButton>
-          <DeleteButton onClick={() => handleDelete(row.id)}>X</DeleteButton>
-        </ButtonContainer>),
+      cell: ({row}) => {
+        // console.log(row.getValue())
+        return (<ButtonContainer>
+                 <EditButton onClick={() => handleEditEntry(`/edit/${row.id}`, { state: { row } })}>Edit</EditButton>
+                 <DeleteButton onClick={() => handleDelete(row.id)}>X</DeleteButton>
+               </ButtonContainer>)
+      }
     }),
 ];
