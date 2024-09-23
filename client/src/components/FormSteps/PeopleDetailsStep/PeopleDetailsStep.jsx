@@ -19,12 +19,21 @@ export const PeopleDetailsStep = ({inputValues}) => {
     };
 
     const handleCloseModal = () => {
+      setEditingRowData();
       setIsModalOpen(false);
     };
 
     const handleSave = (data) => {
-        const newEntry = PeopleSearchDetails.addEntry(data);
-        setPeopleDetails([...peopleDetails, newEntry])
+        if (editingRowData) {
+          PeopleSearchDetails.editEntry(data);
+          setPeopleDetails([...PeopleSearchDetails.PeopleSearchDetailsList]);
+          setEditingRowData();
+        }
+        else {
+          const newEntry = PeopleSearchDetails.addEntry(data);
+          setPeopleDetails([...peopleDetails, newEntry])
+        }
+        
         handleCloseModal();
     };
 

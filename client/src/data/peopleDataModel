@@ -42,6 +42,14 @@ export class PeopleSearchDetails {
         return newEntry;
     }
 
+    static editEntry(data) {
+        // data['id'] = PeopleSearchDetails.generateId();
+        // const newEntry = new PeopleEntryClass(data);
+        // PeopleSearchDetails.PeopleSearchDetailsList.push(newEntry);
+        // return newEntry;
+        return;
+    }
+
     static getDetails() {
         return PeopleSearchDetails.PeopleSearchDetailsList;
     }

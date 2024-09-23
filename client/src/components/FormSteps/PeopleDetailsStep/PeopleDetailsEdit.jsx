@@ -17,14 +17,11 @@ import axios from 'axios';
 export const AddOrEditDetails = ({ openOrClose, onSave, onClose, rowData, autocompleteValue }) => {
     const { control, register, handleSubmit, reset, formState: { errors } } = useForm();
     const [airports, setAirports] = useState([]);
-    const [inputValue, setInputValue] = useState('');
-
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('http://127.0.0.1:8080/airportcodes');
-                console.log(response.data);
                 setAirports(response.data);
                 
             } catch (error) {
@@ -34,23 +31,26 @@ export const AddOrEditDetails = ({ openOrClose, onSave, onClose, rowData, autoco
         fetchData();
     }, []);
 
-    // UseEffect to reset the form when editing an existing row
+
     useEffect(() => {
-        if (rowData) {
-            reset(rowData); // Reset form with the existing row data
+        if (rowData?.original) {
+            reset({
+                ...rowData.original,
+                originAirport: `${rowData.original.originAirport.airport_name} (${rowData.original.originAirport.iata})`
+            });
         } else {
-            reset(); // Reset to empty values for new entry
+            reset();
         }
     }, [rowData, reset]);
 
-    // Handle form submission
     const onSubmit = (data) => {
-        onSave(data); // Pass the form data back to the parent component
+        onSave(data);
+        reset();
     };
 
     const handleClose = () => {
-        reset(); // Reset the form on close
-        onClose(); // Trigger the onClose callback to close the modal
+        reset();
+        onClose();
     };
 
     const getHighlightedParts = (text, inputValue) => {
@@ -78,12 +78,11 @@ export const AddOrEditDetails = ({ openOrClose, onSave, onClose, rowData, autoco
                                         width: '90%',
                                         '& fieldset': {
                                             borderColor: 'black',
-                                            borderWidth: '1px', // Adjust this value for desired thickness
+                                            borderWidth: '1px',
                                             },
                                         }
-                                    
                                     }
-                                    value={autocompleteValue}
+                                    value={rowData ? rowData.original.originAirport : ''}
                                     options={airports}
                                     noOptionsText='No option'
                                     renderInput={
@@ -104,7 +103,7 @@ export const AddOrEditDetails = ({ openOrClose, onSave, onClose, rowData, autoco
                                 
                                         return filteredOptions.slice(0, 15);
                                     }}
-                                    onChange={(_, value) => field.onChange(value ? value : '')} // Update the value in the form
+                                    onChange={(_, value) => field.onChange(value ? value : '')}
                                     renderOption={(props, option, { inputValue }) => {
                                         const { key, ...optionProps } = props;
                                         const { airport_name, iata } = option;
