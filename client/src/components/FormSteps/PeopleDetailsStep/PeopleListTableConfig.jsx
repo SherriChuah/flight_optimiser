@@ -34,10 +34,11 @@ export const columns = ({handleDelete, handleEditEntry}) => [
     columnHelper.accessor('editDelete', {
       header: '',
       cell: ({row}) => {
-        return (<ButtonContainer>
-                 <EditButton onClick={() => handleEditEntry(row)}>Edit</EditButton>
-                 <DeleteButton onClick={() => handleDelete(row.id)}>X</DeleteButton>
-               </ButtonContainer>)
+        return (
+          <ButtonContainer>
+            <EditButton onClick={() => handleEditEntry(row)}>Edit</EditButton>
+            <DeleteButton onClick={() => handleDelete(row.id)}>X</DeleteButton>
+          </ButtonContainer>)
       }
     }),
 ];

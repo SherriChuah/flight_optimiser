@@ -5,7 +5,7 @@ import { Heading, Button } from "./SearchDetailsStepStyle";
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 
-export const SearchDetailsStep = ({step, inputValidation, goToTab, inputValues}) => {
+export const SearchDetailsStep = ({inputValidation, inputValue}) => {
   const [handleInputChange, setValueFunction] = inputValidation;
 
   const goToToday = () => {
@@ -28,7 +28,7 @@ export const SearchDetailsStep = ({step, inputValidation, goToTab, inputValues})
             handleInputChange(setValueFunction, [item.selection]);
           }}
           moveRangeOnFirstSelection={false}
-          ranges={inputValues}
+          ranges={inputValue}
       />
       <div>
         <Button onClick={goToToday}>Today</Button>

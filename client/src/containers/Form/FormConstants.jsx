@@ -32,31 +32,6 @@ export const FORM_CONTENT = {
         label: "",
         placeholder: "Search for airport...",
     }],
-    STEP_2: [{
-        name: "workSpaceName",
-        label: "Workspace Name",
-        placeholder: "Eden",
-    }, {
-        name: "workSpaceUrl",
-        label: "Workspace Url (Optional)",
-        placeholder: "Example.com",
-        type: 'website'
-    },
-    ],
-    STEP_3: [{
-        type:'groupCheckBox',
-        elements:[
-            {
-                name:'single',
-                icon: "Hello",
-                heading: "For myself",
-                subHeading: "Write better. Think more clearly. Stay organized.",
-            }, {
-                name:"group",
-                icon: "Hello",
-                heading: "With My team",
-                subHeading: "Wikis, docs, tasks & projects. all in one place",
-            }
-        ]
-    }]
+    STEP_2: [],
+    STEP_3: []
 }

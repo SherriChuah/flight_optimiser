@@ -12,7 +12,7 @@ import match from 'autosuggest-highlight/match';
 import axios from 'axios';
 
 
-export const DestinationStep = ({step, inputValidation, goToTab, inputValues}) => {
+export const DestinationStep = ({step, inputValidation, goToTab, inputValue}) => {
     const [handleInputChange, setValueFunction] = inputValidation;
     const [airports, setAirports] = useState([]);
     
@@ -64,7 +64,7 @@ export const DestinationStep = ({step, inputValidation, goToTab, inputValues}) =
                     
                             return filteredOptions.slice(0, 15);
                         }}
-                        value={inputValues[0]}
+                        value={inputValue}
                         onChange={(event, newValue) => {
                             const currValue = newValue === null ? '' : newValue
                             handleInputChange(setValueFunction, currValue);

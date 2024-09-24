@@ -15,7 +15,7 @@ export const Form = () => {
           key: 'selection'
         }
       ]);
-    const [peopleDetails, setPeopleDetails] = useState([]); // TODO: Modify config to ensure thattable data is remembered
+    const [peopleDetails, setPeopleDetails] = useState([]);
 
 
     const handleComplete = () => {
@@ -28,7 +28,7 @@ export const Form = () => {
         console.log(newInputValue);
     };
 
-    const FORM_VALIDATION = getFormValidation(setDestinationValue, destinationValue, setTravelDates);
+    const FORM_VALIDATION = getFormValidation(setDestinationValue, destinationValue, setTravelDates, setPeopleDetails);
 
     const defaultFunction = () => {};
 
@@ -91,7 +91,7 @@ export const Form = () => {
                             step={step} 
                             inputValidation={[handleInputChange, FORM_VALIDATION[step]?.function ?? defaultFunction]} 
                             goToTab={goToTab}
-                            inputValues={index == 0 ? [destinationValue] : index == 1 ? travelDates : ''}
+                            inputValue={index == 0 ? destinationValue : index == 1 ? travelDates : index == 2 ? peopleDetails : ''}
                         /></FormWizard.TabContent>
                     );
                 })}

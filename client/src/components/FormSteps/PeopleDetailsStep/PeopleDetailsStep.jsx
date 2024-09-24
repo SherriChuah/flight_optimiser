@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
 import { useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table';
 import { columns as createColumns } from './PeopleListTableConfig';
 import { Table, Th, Td, Tr, Button } from './PeopleDetailsStyle';
 import { PeopleSearchDetails } from '../../../data/peopleDataModel';
 import { AddOrEditDetails } from './PeopleDetailsEdit';
 
-export const PeopleDetailsStep = ({inputValues}) => {
+export const PeopleDetailsStep = ({inputValidation, inputValue}) => {
+    const [handleInputChange, setValueFunction] = inputValidation;
+    
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const [peopleDetails, setPeopleDetails] = React.useState([]);
-
     const [editingRowData, setEditingRowData] = useState(null);
    
     const handleEditEntry = (row) => {
@@ -26,12 +24,12 @@ export const PeopleDetailsStep = ({inputValues}) => {
     const handleSave = (data) => {
         if (editingRowData) {
           PeopleSearchDetails.editEntry(data);
-          setPeopleDetails([...PeopleSearchDetails.PeopleSearchDetailsList]);
+          handleInputChange(setValueFunction, [...PeopleSearchDetails.PeopleSearchDetailsList]);
           setEditingRowData();
         }
         else {
           const newEntry = PeopleSearchDetails.addEntry(data);
-          setPeopleDetails([...peopleDetails, newEntry])
+          handleInputChange(setValueFunction, [...inputValue, newEntry]);
         }
         
         handleCloseModal();
@@ -39,13 +37,13 @@ export const PeopleDetailsStep = ({inputValues}) => {
 
     const handleDelete = (id) => {
       PeopleSearchDetails.deleteEntry(id);
-      setPeopleDetails([...PeopleSearchDetails.PeopleSearchDetailsList]);
+      handleInputChange(setValueFunction, [...PeopleSearchDetails.PeopleSearchDetailsList]);
     };
 
     const columns = createColumns({handleDelete, handleEditEntry});
 
     const table = useReactTable({
-        data: peopleDetails,
+        data: inputValue,
         columns,
         getCoreRowModel: getCoreRowModel(),
     });
@@ -58,8 +56,7 @@ export const PeopleDetailsStep = ({inputValues}) => {
             openOrClose={isModalOpen}
             onSave={handleSave} 
             onClose={handleCloseModal}
-            rowData={editingRowData} 
-            autocompleteValue={inputValues[0]} // Pass row data if editing
+            rowData={editingRowData}
         />}
 
         <Table>
