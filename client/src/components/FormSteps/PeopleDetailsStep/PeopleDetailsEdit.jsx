@@ -14,8 +14,13 @@ import axios from 'axios';
 
 
 
-export const AddOrEditDetails = ({ openOrClose, onSave, onClose, rowData, autocompleteValue }) => {
-    const { control, register, handleSubmit, reset, formState: { errors } } = useForm();
+export const AddOrEditDetails = ({ openOrClose, onSave, onClose, rowData }) => {
+    const { control, register, handleSubmit, reset, formState: { errors } } = useForm({
+        defaultValues: {
+            cabinClass: 'economy',
+            directFlight: 'direct'
+          }
+    });
     const [airports, setAirports] = useState([]);
 
     useEffect(() => {
