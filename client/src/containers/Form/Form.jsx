@@ -54,10 +54,6 @@ export const Form = () => {
         return () => window.removeEventListener("popstate", handlePopState);
     }, []);
 
-    // const tabChanged = () => {
-    //     console.log('Destination:', destinationValue);
-    // };
-
     return (
         <FormContainer>
             <Title>Booking Flights <br />Made Easier.</Title>
@@ -91,7 +87,7 @@ export const Form = () => {
                             step={step} 
                             inputValidation={[handleInputChange, FORM_VALIDATION[step]?.function ?? defaultFunction]} 
                             goToTab={goToTab}
-                            inputValue={index == 0 ? destinationValue : index == 1 ? travelDates : index == 2 ? peopleDetails : ''}
+                            inputValue={index == 0 ? destinationValue : index == 1 ? travelDates : index == 2 ? peopleDetails : [destinationValue, travelDates, peopleDetails]}
                         /></FormWizard.TabContent>
                     );
                 })}
