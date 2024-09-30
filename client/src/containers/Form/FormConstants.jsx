@@ -1,7 +1,7 @@
 import { DestinationStep } from "../../components/FormSteps/DestinationStep/DestinationStep";
 import { SearchDetailsStep } from "../../components/FormSteps/SearchDetailsStep/SearchDetailsStep";
 import { PeopleDetailsStep } from "../../components/FormSteps/PeopleDetailsStep/PeopleDetailsStep";
-import { FlightResultStep } from "../../components/FormSteps/FlightResultStep/FlightResultStep";
+import { ReviewStep } from "../../components/FormSteps/ReviewStep/ReviewStep";
 
 
 
@@ -19,8 +19,8 @@ export const STEP_INFO = {
         content: PeopleDetailsStep
     },
     STEP_4: {
-        progress_title: "Flight Results",
-        content: FlightResultStep
+        progress_title: "Review",
+        content: ReviewStep
     }
 }
 

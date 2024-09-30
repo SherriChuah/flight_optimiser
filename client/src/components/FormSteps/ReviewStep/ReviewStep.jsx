@@ -1,4 +1,6 @@
-export const FlightResultStep = ({inputValue}) => {
+import { LeftDiv } from "./ReviewStepStyle";
+
+export const ReviewStep = ({inputValue}) => {
     const [destinationValue, travelDates, peopleDetails] = inputValue;
 
     console.log(destinationValue);
@@ -7,23 +9,33 @@ export const FlightResultStep = ({inputValue}) => {
 
     return (
         <div>
-            <div>
-                <p>airport_name: {destinationValue.airport_name}</p>
-                <p>city: {destinationValue.city}</p>
-                <p>country: {destinationValue.country}</p>
-                <p>iata: {destinationValue.iata}</p>
-            </div>
+            <LeftDiv>
+                <h2>Destination Airport</h2>
+                <p>{destinationValue.airport_name} ({destinationValue.iata})</p>
+                <p>{destinationValue.city}, {destinationValue.country}</p>
+            </LeftDiv>
             <br/>
-            <div>
+            <LeftDiv>
+                <h2>Travel Dates</h2>
                 {travelDates.map((date, index) => (
                     <div>
-                        <p>startDate: {date.startDate.getDate()}</p>
-                        <p>endDate: {date.endDate.getDate()}</p>
+                        <p>From: {date.startDate.toLocaleDateString('en-GB', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric',
+                            })};
+                        </p>
+                        <p>To: {date.endDate.toLocaleDateString('en-GB', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric',
+                            })};
+                        </p>
                     </div>
                 ))}
-            </div>
+            </LeftDiv>
             <br/>
-            <div>
+            <LeftDiv>
                 {peopleDetails.map((peopleDetail, index) => (
                     <li key={index}>
                         <p>id: {peopleDetail.id}</p>
@@ -40,7 +52,7 @@ export const FlightResultStep = ({inputValue}) => {
                     </li>
                 ))}
                 
-            </div>
+            </LeftDiv>
 
         </div>
     )
