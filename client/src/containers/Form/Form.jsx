@@ -4,9 +4,11 @@ import "react-form-wizard-component/dist/style.css";
 import { ALL_STEPS_LIST, STEP_INFO } from "./FormConstants";
 import { getFormValidation } from './FormConfig';
 import { Button, FormContainer, Title } from './FormStyle';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 export const Form = () => {
+    const navigate = useNavigate();
     const [destinationValue, setDestinationValue] = useState('');
     const [travelDates, setTravelDates] = useState([
         {
@@ -20,7 +22,7 @@ export const Form = () => {
 
     const handleComplete = () => {
         console.log("Form completed!");
-        // Handle form completion logic here
+        navigate('/results', { state: { destinationValue, travelDates, peopleDetails} });
     };
 
     const handleInputChange = (setFunction, newInputValue) => {
