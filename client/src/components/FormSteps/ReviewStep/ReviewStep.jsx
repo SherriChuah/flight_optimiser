@@ -47,7 +47,7 @@ export const ReviewStep = ({inputValue}) => {
                         <p>Direct Flight: {peopleDetail.directFlight}</p>
                     </LeftDiv>
                 ))}
-                
+                <br/>
             </LeftDiv>
 
         </div>

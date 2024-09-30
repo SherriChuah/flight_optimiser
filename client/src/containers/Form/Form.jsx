@@ -75,6 +75,11 @@ export const Form = () => {
                     Back
                     </Button>
                 )}
+                finishButtonTemplate={(handleComplete) => (
+                    <Button onClick={handleComplete}>
+                    Results
+                    </Button>
+                )}
             >
                 {ALL_STEPS_LIST.map((step, index, arr) => {
                     const StepComponent = STEP_INFO[step].content;
