@@ -36,20 +36,16 @@ export const ReviewStep = ({inputValue}) => {
             </LeftDiv>
             <br/>
             <LeftDiv>
+                <h2>People Details</h2>
                 {peopleDetails.map((peopleDetail, index) => (
-                    <li key={index}>
-                        <p>id: {peopleDetail.id}</p>
-                        <p>group: {peopleDetail.group}</p>
-                        <p>airport_name: {peopleDetail.originAirport.airport_name}</p>
-                        <p>Origin Airport</p>
-                        <p>{peopleDetail.originAirport.city}</p>
-                        <p>{peopleDetail.originAirport.country}</p>
-                        <p>{peopleDetail.originAirport.iata}</p>
-                        <p>depart after: {peopleDetail.departAfter}</p>
-                        <p>arrive before: {peopleDetail.arriveBefore}</p>
-                        <p>cabin class: {peopleDetail.cabinClass}</p>
-                        <p>direct flight: {peopleDetail.directFlight}</p>
-                    </li>
+                    <LeftDiv key={peopleDetail.id}>
+                        <p>Group Name: {peopleDetail.group}</p>
+                        <p>Origin Airport: {peopleDetail.originAirport.airport_name}, ({peopleDetail.originAirport.iata})</p>
+                        <p>Depart After: {peopleDetail.departAfter}</p>
+                        <p>Arrive Before: {peopleDetail.arriveBefore}</p>
+                        <p>Cabin Class: {peopleDetail.cabinClass}</p>
+                        <p>Direct Flight: {peopleDetail.directFlight}</p>
+                    </LeftDiv>
                 ))}
                 
             </LeftDiv>

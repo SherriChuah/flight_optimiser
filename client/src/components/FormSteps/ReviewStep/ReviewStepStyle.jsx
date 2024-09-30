@@ -7,4 +7,5 @@ export const LeftDiv = styled.div`
     text-align: justify;
     border: 1px solid black;
     padding-left: 20px; 
+    padding-right: 20px; 
 `
