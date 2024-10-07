@@ -18,8 +18,8 @@ export const ResultsPage = () => {
       <h1>Form Results</h1>
       {destinationValue && travelDates && peopleDetails ? (
         <div>
-          <p><strong>Field 1:</strong> {destinationValue.airport_name}</p>
-          <p><strong>Field 2:</strong> {travelDates.map((date, index) => (
+          <p><strong>Destination:</strong> {destinationValue.airport_name}</p>
+          <p><strong>Dates:</strong> {travelDates.map((date, index) => (
                     <div key={index}>
                         <p>From: {date.startDate.toLocaleDateString('en-GB', {
                             day: 'numeric',
@@ -35,7 +35,28 @@ export const ResultsPage = () => {
                         </p>
                     </div>
                 ))}</p>
-          <p><strong>Field 2:</strong> {peopleDetails.group}</p>
+          <p><strong>People Details:</strong> {peopleDetails.map((item, index) => (
+            <div key={index}>
+              <p>
+                {item.group}
+              </p>
+              <p>
+                {item.arriveBefore}
+              </p>
+              <p>
+                {item.cabinClass}
+              </p>
+              <p>
+                {item.departAfter}
+              </p>
+              <p>
+                {item.directFlight}
+              </p>
+              <p>
+                {item.originAirport.airport_name}
+              </p>
+            </div>
+          ))}</p>
         </div>
       ) : (
         <p>No form data available. Redirecting...</p>
