@@ -89,7 +89,18 @@ export const AddOrEditDetails = ({ openOrClose, onSave, onClose, rowData }) => {
                                             },
                                         }
                                     }
-                                    value={rowData ? rowData.original.originAirport : ''}
+                                    // value={rowData ? rowData.original.originAirport : field.value ? field.value : ''}
+                                    value={(() => {
+                                        if (typeof field.value !== 'string' & field.value !== undefined) {
+                                            return field.value
+                                        } else if (rowData) {
+                                            return rowData.original.originAirport
+                                        } else {
+                                            return ''
+                                        }
+
+                                        // return field.value ? field.value : rowData ? rowData.original.originAirport : ''
+                                    })()}
                                     options={airports}
                                     noOptionsText='No option'
                                     renderInput={
@@ -110,7 +121,7 @@ export const AddOrEditDetails = ({ openOrClose, onSave, onClose, rowData }) => {
                                 
                                         return filteredOptions.slice(0, 15);
                                     }}
-                                    onChange={(_, value) => field.onChange(value ? value : '')}
+                                    onChange={(_, value) => field.onChange(value || '')}
                                     renderOption={(props, option, { inputValue }) => {
                                         const { key, ...optionProps } = props;
                                         const { airport_name, iata } = option;

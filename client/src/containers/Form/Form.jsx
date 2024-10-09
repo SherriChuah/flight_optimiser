@@ -4,7 +4,7 @@ import "react-form-wizard-component/dist/style.css";
 import { ALL_STEPS_LIST, STEP_INFO } from "./FormConstants";
 import { getFormValidation } from './FormConfig';
 import { Button, FormContainer, Title } from './FormStyle';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 export const Form = () => {
@@ -29,7 +29,7 @@ export const Form = () => {
         setFunction(newInputValue);
     };
 
-    const FORM_VALIDATION = getFormValidation(setDestinationValue, destinationValue, setTravelDates, setPeopleDetails);
+    const FORM_VALIDATION = getFormValidation(setDestinationValue, destinationValue, setTravelDates, setPeopleDetails, peopleDetails);
 
     const defaultFunction = () => {};
 
