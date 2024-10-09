@@ -27,7 +27,6 @@ export const Form = () => {
 
     const handleInputChange = (setFunction, newInputValue) => {
         setFunction(newInputValue);
-        console.log(newInputValue);
     };
 
     const FORM_VALIDATION = getFormValidation(setDestinationValue, destinationValue, setTravelDates, setPeopleDetails);

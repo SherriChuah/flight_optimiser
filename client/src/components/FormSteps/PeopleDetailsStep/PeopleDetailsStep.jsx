@@ -12,7 +12,7 @@ export const PeopleDetailsStep = ({inputValidation, inputValue}) => {
     const [editingRowData, setEditingRowData] = useState(null);
    
     const handleEditEntry = (row) => {
-      setEditingRowData(row); // Pass the existing row data for editing
+      setEditingRowData(row);
       setIsModalOpen(true);
     };
 
@@ -31,7 +31,6 @@ export const PeopleDetailsStep = ({inputValidation, inputValue}) => {
           const newEntry = PeopleSearchDetails.addEntry(data);
           handleInputChange(setValueFunction, [...inputValue, newEntry]);
         }
-        
         handleCloseModal();
     };
 

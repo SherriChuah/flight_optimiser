@@ -13,7 +13,6 @@ import { generateTimeOptions } from './GenerateTimeOptions';
 import axios from 'axios';
 
 
-
 export const AddOrEditDetails = ({ openOrClose, onSave, onClose, rowData }) => {
     const { control, register, handleSubmit, reset, formState: { errors } } = useForm({
         defaultValues: {
@@ -49,6 +48,9 @@ export const AddOrEditDetails = ({ openOrClose, onSave, onClose, rowData }) => {
     }, [rowData, reset]);
 
     const onSubmit = (data) => {
+        if (typeof data.originAirport == 'string') {
+            data.originAirport = rowData.original.originAirport;
+        }
         onSave(data);
         reset();
     };

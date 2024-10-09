@@ -43,11 +43,14 @@ export class PeopleSearchDetails {
     }
 
     static editEntry(data) {
-        // data['id'] = PeopleSearchDetails.generateId();
-        // const newEntry = new PeopleEntryClass(data);
-        // PeopleSearchDetails.PeopleSearchDetailsList.push(newEntry);
-        // return newEntry;
-        return;
+        const itemToUpdate = PeopleSearchDetails.PeopleSearchDetailsList[parseInt(data.id) - 1];
+
+        itemToUpdate.group = data.group;
+        itemToUpdate.originAirport = data.originAirport;
+        itemToUpdate.departAfter = data.departAfter;
+        itemToUpdate.arriveBefore = data.arriveBefore;
+        itemToUpdate.cabinClass = data.cabinClass;
+        itemToUpdate.directFlight = data.directFlight;
     }
 
     static getDetails() {
