@@ -70,7 +70,12 @@ export const AddOrEditDetails = ({ openOrClose, onSave, onClose, rowData }) => {
             <PopUpInnerStyle>
                 <PopUpTitle>{rowData ? 'Edit Entry' : 'Add New Entry'}</PopUpTitle>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <Input type="text" placeholder="Group Name" {...register("group", { required: 'Please insert a group name.'})}  />
+                    <Input type="text" placeholder="Group Name" {...register("group", { 
+                        required: 'Please insert a group name.',
+                        maxLength: {
+                            value: 10,
+                            message: 'Group name must be 10 characters or less.'
+                        }})}  />
                     {errors.group && <Error>{errors.group.message}</Error>}
 
                     <Center>

@@ -18,13 +18,15 @@ export const CustomOption = (matches) => {
                     </Span>
                 ))}
                 {', '}
-                {matches.matches.iataParts.map((part, index) => (
+                {matches.matches.iataParts.map((part, index, arr) => (
                     <Span
                         key={`iata-${index}`}
                         part={part}
                         type={'airportNameIATA'}
                     >
-                        ({part.text})
+                        {index === 0 && '('}
+                        {part.text}
+                        {index === arr.length - 1 && ')'}
                     </Span>
                 ))}
             </RightDiv>
