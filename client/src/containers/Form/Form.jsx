@@ -97,7 +97,6 @@ export const Form = () => {
                         /></FormWizard.TabContent>
                     );
                 })}
-
             </FormWizard>
         </FormContainer>
         

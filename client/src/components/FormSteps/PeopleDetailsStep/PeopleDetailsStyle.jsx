@@ -164,7 +164,7 @@ export const Error = styled.p`
   font-family: 'Inter, sans-serif
 `
 export const DirectIndirectDiv = styled.div`
-  padding-top: 10px;
+  padding-top: 15px;
 `
 
 export const ButtonGroupDiv = styled.div`

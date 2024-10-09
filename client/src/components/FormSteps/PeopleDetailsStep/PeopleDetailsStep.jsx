@@ -48,7 +48,7 @@ export const PeopleDetailsStep = ({inputValidation, inputValue}) => {
     });
 
     return (
-      <div >
+      <div style={{ overflowX: 'auto' }}>
         <Button onClick={() => setIsModalOpen(true)}>Add Entry</Button>
 
         {isModalOpen && <AddOrEditDetails 

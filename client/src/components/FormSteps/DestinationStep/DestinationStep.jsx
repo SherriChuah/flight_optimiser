@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Heading, InputBox } from "./DestinationStepStyle";
+import { Heading, InputBox, Div, SubtitleDiv } from "./DestinationStepStyle";
 import { FORM_CONTENT } from "../../../containers/Form/FormConstants";
 import { CustomOption } from './CustomOption'
 
@@ -38,7 +38,7 @@ export const DestinationStep = ({step, inputValidation, goToTab, inputValue}) =>
 
 
     return (
-        <div>
+        <Div>
             <Heading>Where to next?</Heading>
             
             {FORM_CONTENT[step].map((index, item) => (
@@ -94,14 +94,13 @@ export const DestinationStep = ({step, inputValidation, goToTab, inputValue}) =>
                     />
                 </InputBox>
             ))}
-            <br />
-            <div>
+            <SubtitleDiv>
                 Have the excel/image ready? <a href="#" onClick={(e) => { 
                     e.preventDefault(); 
                     goToTab(2);
                     handleInputChange(setValueFunction, '');
                 }}>Click here</a>!
-            </div>
-        </div>
+            </SubtitleDiv>
+        </Div>
     )
 }

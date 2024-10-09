@@ -20,7 +20,7 @@ export const SearchDetailsStep = ({inputValidation, inputValue}) => {
   };
   
   return (
-    <div>
+    <div style={{ overflowX: 'auto' }}>
       <Heading>When are you traveling?</Heading>
       <DateRange
           editableDateInputs={true}
