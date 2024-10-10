@@ -4,6 +4,15 @@ export const Table = styled.table`
   border-collapse: collapse;
   width: 100%;
   font-family: Arial, sans-serif;
+  font-size:10px;
+
+  @media (min-width: 400px) {
+      font-size:12px;
+  }
+
+  @media (min-width: 600px) {
+      font-size:13px;
+  }
 `;
 
 export const Th = styled.th`
@@ -57,29 +66,53 @@ export const Button = styled.button`
   height: 20%;
   margin: 10px;
   border-radius: 4px;
+  font-size:11px;
+
+  @media (min-width: 400px) {
+      font-size:12px;
+  }
+
+  @media (min-width: 600px) {
+      font-size:13px;
+  }
 `;
 
 export const Submit = styled.input`
   background-color: var(--primary);
   color: var(--white);
   border: none;
-  padding: 10px 25px;
+  padding: 10px 15px;
   cursor: pointer;
-  height: 20%;
+  font-size: 12px;
   margin: 10px;
   border-radius: 4px;
+
+  @media (min-width: 400px) {
+      font-size: 14px;
+  }
+
+  @media (min-width: 600px) {
+      font-size: 15px;
+  }
 `;
 
 export const Cancel = styled.button`
   background-color: var(--gray);
   color: var(--black);
   border: none;
-  padding: 10px 25px;
+  padding: 10px 15px;
   cursor: pointer;
-  height: 20%;
+  font-size: 12px;
   margin: 10px;
   border-radius: 4px;
   
+  @media (min-width: 400px) {
+      font-size: 14px;
+  }
+
+  @media (min-width: 600px) {
+      font-size: 15px;
+  }
 `;
 
 export const PopUpStyle = styled.div`
@@ -95,21 +128,34 @@ export const PopUpStyle = styled.div`
 `
 
 export const PopUpInnerStyle = styled.div`
-    position: relative;
     padding: 20px;
-    width: 60%;
+    width: 75%;
     height: 70%;
     background-color: var(--white);
     border-radius: 4px;
+    margin: 0 auto;
 `
 
 export const PopUpTitle = styled.h1`
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--primary);
   text-align: left;
-  margin-left: 25px;
-  margin-right: 25px;
-  padding-top: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  @media (min-width: 400px) {
+      font-size: 1.8rem;
+      margin-left: 13px;
+      margin-right: 13px;
+  }
+
+  @media (min-width: 600px) {
+      font-size: 2rem;
+      margin-left: 16px;
+      margin-right: 16px;
+  }
 `
 
 export const Input = styled.input`
@@ -148,9 +194,16 @@ export const SplitSelect = styled.select`
 `
 
 export const Label = styled.label`
-  margin: 40px;
-`
+  margin: 10px;
 
+  @media (min-width: 400px) {
+      margin: 15px;
+  }
+
+  @media (min-width: 600px) {
+      margin: 35px;
+  }
+`
 
 export const Center = styled.div`
     display:flex;
@@ -163,14 +216,14 @@ export const Error = styled.p`
   font-size: 10px;
   font-family: 'Inter, sans-serif
 `
+
 export const DirectIndirectDiv = styled.div`
   padding-top: 15px;
 `
 
 export const ButtonGroupDiv = styled.div`
-  position: absolute;
-  bottom: 10px;
-  left: 50%; /* Move to the center horizontally */
-  transform: translateX(-50%);
-  
+  position: relative;
+  // bottom: 10%;
+  // left: 50%;
+  // transform: translateX(-50%);
 `

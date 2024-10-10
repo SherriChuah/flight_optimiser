@@ -2,8 +2,9 @@ import React from 'react';
 import { DateRange } from 'react-date-range';
 import { Heading, Button } from "./SearchDetailsStepStyle";
 
-import 'react-date-range/dist/styles.css'; // main css file
-import 'react-date-range/dist/theme/default.css'; // theme css file
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
+
 
 export const SearchDetailsStep = ({inputValidation, inputValue}) => {
   const [handleInputChange, setValueFunction] = inputValidation;
@@ -20,7 +21,7 @@ export const SearchDetailsStep = ({inputValidation, inputValue}) => {
   };
   
   return (
-    <div style={{ overflowX: 'auto' }}>
+    <div>
       <Heading>When are you traveling?</Heading>
       <DateRange
           editableDateInputs={true}
