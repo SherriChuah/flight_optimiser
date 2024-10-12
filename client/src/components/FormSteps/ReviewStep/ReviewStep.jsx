@@ -1,4 +1,4 @@
-import { Div, Heading, BigDiv } from "./ReviewStepStyle";
+import { Div, Heading, BigDiv, Para } from "./ReviewStepStyle";
 
 export const ReviewStep = ({inputValue}) => {
     const [destinationValue, travelDates, peopleDetails] = inputValue;
@@ -12,25 +12,25 @@ export const ReviewStep = ({inputValue}) => {
             <BigDiv>
                 <Div>
                     <Heading>Destination Airport</Heading>
-                    <p>{destinationValue.airport_name} ({destinationValue.iata})</p>
-                    <p>{destinationValue.city}, {destinationValue.country}</p>
+                    <Para>{destinationValue.airport_name} ({destinationValue.iata})</Para>
+                    <Para>{destinationValue.city}, {destinationValue.country}</Para>
                 </Div>
                 <Div>
                     <Heading>Travel Dates</Heading>
                     {travelDates.map((date, index) => (
                         <div>
-                            <p>From: {date.startDate.toLocaleDateString('en-GB', {
+                            <Para>From: {date.startDate.toLocaleDateString('en-GB', {
                                 day: 'numeric',
                                 month: 'long',
                                 year: 'numeric',
-                                })};
-                            </p>
-                            <p>To: {date.endDate.toLocaleDateString('en-GB', {
+                                })}
+                            </Para>
+                            <Para>To: {date.endDate.toLocaleDateString('en-GB', {
                                 day: 'numeric',
                                 month: 'long',
                                 year: 'numeric',
-                                })};
-                            </p>
+                                })}
+                            </Para>
                         </div>
                     ))}
                 </Div>
@@ -42,12 +42,12 @@ export const ReviewStep = ({inputValue}) => {
                 </div>
                 <br />             {peopleDetails.map((peopleDetail, index) => (
                     <Div key={peopleDetail.id}>
-                        <p>Group Name: {peopleDetail.group}</p>
-                        <p>Origin Airport: {peopleDetail.originAirport.airport_name}, ({peopleDetail.originAirport.iata})</p>
-                        <p>Depart After: {peopleDetail.departAfter}</p>
-                        <p>Arrive Before: {peopleDetail.arriveBefore}</p>
-                        <p>Cabin Class: {peopleDetail.cabinClass}</p>
-                        <p>Direct Flight: {peopleDetail.directFlight}</p>
+                        <Para>Group Name: {peopleDetail.group}</Para>
+                        <Para>Origin Airport: {peopleDetail.originAirport.airport_name}, ({peopleDetail.originAirport.iata})</Para>
+                        <Para>Depart After: {peopleDetail.departAfter}</Para>
+                        <Para>Arrive Before: {peopleDetail.arriveBefore}</Para>
+                        <Para>Cabin Class: {peopleDetail.cabinClass}</Para>
+                        <Para>Direct Flight: {peopleDetail.directFlight}</Para>
                     </Div>
                 ))}
                 <br/>

@@ -1,14 +1,12 @@
 import styled from 'styled-components'
 
 export const BigDiv = styled.div`
-    // // float: left;      
-    // // width: 200px;     
-    margin: 1px;   
+    // margin: 1px;   
     text-align: justify;
     border: 1px solid black;
-    padding: 10px;
     padding:1rem;
-    display:block;
+    display:flex;
+    flex-wrap: wrap;
 
     @media (min-width: 400px) {
     }
@@ -22,12 +20,18 @@ export const BigDiv = styled.div`
 export const Div = styled.div`
     float: left;   
     margin: 1px;   
-    text-align: center;
+    text-align: left;
     border: 1px solid black;
     padding: 10px; 
-    
+    width: 100%;
 `
 
-export const Heading = styled.h2`
-    font-size:1.2rem;
+export const Heading = styled.h1`
+    font-size:1rem;
+    margin-top: 0;
+`
+
+export const Para = styled.p`
+    font-size:0.7rem;
+    margin:0px;
 `
