@@ -1,16 +1,13 @@
 import os
-from flask import Flask, request, jsonify
-from flask_cors import CORS
 from sqlalchemy import create_engine
 import pymysql
 from dotenv import load_dotenv
-from typing import Tuple
-from services.sql_queries import *
+from app.services.sql_queries import get_all_rows_sql
+
 
 load_dotenv('./../notebook/secrets.env')
 
-
-def get_all_airport_codes() -> Tuple[str, str, str, str]:
+def get_airport_codes_from_database():
     engine = create_engine(os.getenv('DATABASE_URI'))
 
     # Connect to the database
@@ -34,4 +31,4 @@ def get_all_airport_codes() -> Tuple[str, str, str, str]:
     engine.dispose()
     connection.close()
 
-    return (tuple(column_names),) + result
+    return column_names, result

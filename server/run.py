@@ -1,8 +1,8 @@
 import os
 from flask import Flask, request
 from flask_cors import CORS
-from services.mysql_service import get_all_airport_codes
-from transformation.format import format_result_as_json
+from app.services.mysql_service import get_all_airport_codes
+from app.utils.format import format_result_as_json
 
 app = Flask(__name__)
 CORS(app) # need set here to not accept all origins
@@ -21,8 +21,6 @@ def airport_codes():
 
     result = get_all_airport_codes()
 
-    format_result_as_json(result)
-
     return format_result_as_json(result)
 
     # return jsonify(result)
@@ -32,10 +30,9 @@ def airport_codes():
 def process_search():
     data = request.get_json()
 
-    print('here')
     print(data)
 
-    print('ended')
+    
 
     return data
 
