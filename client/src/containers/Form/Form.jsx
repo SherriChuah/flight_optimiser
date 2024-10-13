@@ -6,9 +6,14 @@ import { getFormValidation } from './FormConfig';
 import { Button, FormContainer, Title } from './FormStyle';
 import { useNavigate } from 'react-router-dom';
 
+import axios from 'axios';
+
 
 export const Form = () => {
     const navigate = useNavigate();
+
+    const [responseMessage, setResponseMessage] = useState([]);
+
     const [destinationValue, setDestinationValue] = useState('');
     const [travelDates, setTravelDates] = useState([
         {
@@ -20,8 +25,25 @@ export const Form = () => {
     const [peopleDetails, setPeopleDetails] = useState([]);
 
 
-    const handleComplete = () => {
+    const handleComplete = async (e) => {
         console.log("Form completed!");
+
+        const dataToSend = { data: {
+            destination: destinationValue,
+            travelDates: travelDates,
+            peopleDetails: peopleDetails
+        }}
+
+        try {
+            const response = await axios.post('http://127.0.0.1:8080/process-search', dataToSend)
+
+            setResponseMessage(response.data.message);
+        } catch (error) {
+            console.error('Error posting data:', error);
+
+            setResponseMessage('An error occurred. Please try again');
+        };
+
         navigate('/results', { state: { destinationValue, travelDates, peopleDetails} });
     };
 
