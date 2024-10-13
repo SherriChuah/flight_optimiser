@@ -3,11 +3,18 @@ from sqlalchemy import create_engine
 import pymysql
 from dotenv import load_dotenv
 from app.services.sql_queries import get_all_rows_sql
+from typing import Tuple
 
 
 load_dotenv('./../notebook/secrets.env')
 
-def get_airport_codes_from_database():
+def get_airport_codes_from_database() -> Tuple[list, str]:
+    """Get airport codes from database
+
+    Returns:
+        Tuple(list, str): returns a list of columns and record results
+    """
+
     engine = create_engine(os.getenv('DATABASE_URI'))
 
     # Connect to the database

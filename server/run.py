@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request
+from flask import Flask, request, Response
 from flask_cors import CORS
 from app.services.mysql_service import get_all_airport_codes
 from app.utils.format import format_result_as_json
@@ -16,14 +16,16 @@ def set_headers(response):
     return response
 
 @app.route('/airport-codes', methods=['GET'])
-def airport_codes():
-    # query = request.args.get('q', '')
+def airport_codes() -> Response:
+    """
+    Get all airport codes from database
 
+    Returns:
+        _type_: _description_
+    """
     result = get_all_airport_codes()
 
     return format_result_as_json(result)
-
-    # return jsonify(result)
 
 
 @app.route('/process-search', methods=['POST'])
