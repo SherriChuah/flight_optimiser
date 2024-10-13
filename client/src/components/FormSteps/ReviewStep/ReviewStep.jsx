@@ -18,7 +18,7 @@ export const ReviewStep = ({inputValue}) => {
                 <Div>
                     <Heading>Travel Dates</Heading>
                     {travelDates.map((date, index) => (
-                        <div>
+                        <div key={`travel_${index}`}>
                             <Para>From: {date.startDate.toLocaleDateString('en-GB', {
                                 day: 'numeric',
                                 month: 'long',

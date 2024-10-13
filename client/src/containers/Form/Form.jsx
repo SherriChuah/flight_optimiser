@@ -44,7 +44,7 @@ export const Form = () => {
             setResponseMessage('An error occurred. Please try again');
         };
 
-        navigate('/results', { state: { destinationValue, travelDates, peopleDetails} });
+        // navigate('/results', { state: { destinationValue, travelDates, peopleDetails} });
     };
 
     const handleInputChange = (setFunction, newInputValue) => {

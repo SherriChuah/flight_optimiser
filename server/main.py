@@ -5,8 +5,15 @@ from services.mysql_service import get_all_airport_codes
 from transformation.format import format_result_as_json
 
 app = Flask(__name__)
-cors = CORS(app, origin=["http://localhost:5173"]) # need set here to not accept all origins
+CORS(app) # need set here to not accept all origins
 
+
+@app.after_request
+def set_headers(response):
+    response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Headers"] = "*"
+    response.headers["Access-Control-Allow-Methods"] = "*"
+    return response
 
 @app.route('/airport-codes', methods=['GET'])
 def airport_codes():
@@ -25,8 +32,12 @@ def airport_codes():
 def process_search():
     data = request.get_json()
 
+    print('here')
     print(data)
 
+    print('ended')
+
+    return data
 
 
 
