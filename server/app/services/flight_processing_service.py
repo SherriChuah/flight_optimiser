@@ -7,11 +7,12 @@ from app.services.air_scrapper_api.search_flights_endpoint import get_skyid_and_
 def process_search_for_results(data: dict):
 
     # Going to destination search details
+    for person_detail in data['peopleDetails']:
+        fly_out_date = get_fly_out_date(data)
+        arrival_airport = get_arrival_airport(data)
+        departure_airport = get_departure_airport(person_detail['originAirport'])
 
-    fly_out_date = get_fly_out_date(data)
-    departure_airport = get_departure_airport(data)
-
-    print(fly_out_date)
+        print(fly_out_date)
 
 
     # SearchInputs(
@@ -37,14 +38,18 @@ def get_fly_out_date(data):
     return datetime.strptime(fly_out_date, '%Y-%m-%d')
 
 
-def get_departure_airport(data):
+def get_arrival_airport(data):
     # put in country for searchAirport endpoint
     # check suggestionTitle between bracket if it matches the iata
-    departure_country = data['destination']['country']
-    departure_iata = data['destination']['iata']
+    arrival_country = data['destination']['country']
+    arrival_iata = data['destination']['iata']
+
+    get_skyid_and_origin_entityid(arrival_country, arrival_iata)
+    
+    # arrival_airport = data['destination']
+
+def get_departure_airport(data):
+    departure_country = data['country']
+    departure_iata = data['iata']
 
     get_skyid_and_origin_entityid(departure_country, departure_iata)
-    
-
-
-    departure_airport = data['destination']
