@@ -1,7 +1,8 @@
 from app.model.SearchInputs import SearchInputs
 from datetime import datetime
 
-from app.services.air_scrapper_api.search_flights_endpoint import get_skyid_and_origin_entityid
+from app.services.air_scrapper_api.search_flights_endpoint import (
+    get_skyid_and_origin_entityid)
 
 
 def process_search_for_results(data: dict):
