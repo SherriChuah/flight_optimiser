@@ -25,7 +25,7 @@ dist-ssr
 
 node_modules/
 
-.env
+*.env
 
 .ipynb_checkpoints
 

@@ -6,7 +6,7 @@ from app.services.sql_queries import get_all_rows_sql
 from typing import Tuple
 
 
-load_dotenv('./../../secrets.env')
+load_dotenv('./../server/secrets.env')
 
 def get_airport_codes_from_database() -> Tuple[list, str]:
     """Get airport codes from database
