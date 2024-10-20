@@ -9,6 +9,6 @@ def process_search_for_results(data: dict):
 
     search_list = prepare_people_details_for_search(data)
 
-    results = get_flight_table_results_given_search_list()
+    results = get_flight_table_results_given_search_list(search_list)
 
     print(results)

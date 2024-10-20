@@ -1,6 +1,6 @@
 from datetime import datetime
 from app.model.SearchInputs import SearchInputs
-from server.app.services.air_scrapper_api.search_airport_endpoint import (
+from app.services.air_scrapper_api.search_airport_endpoint import (
     get_skyid_and_origin_entityid)
 
 

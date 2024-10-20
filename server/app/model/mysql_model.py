@@ -8,11 +8,11 @@ from typing import Tuple
 
 load_dotenv('./../server/secrets.env')
 
-def get_airport_codes_from_database() -> Tuple[list, str]:
+def get_airport_codes_from_database() -> Tuple[list, tuple]:
     """Get airport codes from database
 
     Returns:
-        Tuple(list, str): returns a list of columns and record results
+        Tuple(list, tuple): returns a list of columns and record results
     """
 
     engine = create_engine(os.getenv('DATABASE_URI'))
