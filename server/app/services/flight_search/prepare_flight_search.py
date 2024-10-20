@@ -5,7 +5,6 @@ from app.services.air_scrapper_api.search_airport_endpoint import (
 
 
 def prepare_people_details_for_search(data):
-    print('In prepare details')
     search_list = []
 
     for person_detail in data['peopleDetails']:
@@ -46,7 +45,9 @@ def get_travel_date(data, fly_direction):
     else:
         fly_date = data['travelDates'][0]['endDate'].split('T')[0]
 
-    return datetime.strptime(fly_date, '%Y-%m-%d')
+    date_obj = datetime.strptime(fly_date, '%Y-%m-%d')
+
+    return date_obj.strftime('%Y-%m-%d')
 
 
 def get_departure_airport_info(data):
