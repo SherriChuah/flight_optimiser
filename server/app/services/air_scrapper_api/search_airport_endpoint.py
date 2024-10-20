@@ -23,7 +23,7 @@ def get_skyid_and_origin_entityid(country, iata):
 
     # data_list = response['data']
 
-
+    # TODO: UNCOMMENT ABOVE AND REMOVE BOTTOM LINE
     data_list = fake_data['data']
 
     # print(country, iata)

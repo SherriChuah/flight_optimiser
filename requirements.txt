@@ -8,3 +8,6 @@ react-form-wizard-component
 sqlalchemy
 python-dotenv
 pymysql
+react-date-range
+@tanstack/react-table
+react-hook-form
