@@ -35,7 +35,6 @@ def prepare_people_details_for_search(data):
                 cabin_class,
                 fly_back_date
             ))
-    
     return search_list
 
 

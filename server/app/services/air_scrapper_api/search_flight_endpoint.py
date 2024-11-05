@@ -10,9 +10,10 @@ load_dotenv('./../../../../server/secrets.env')
 
 
 def get_flight_table_results_given_search_list(search_list):
-    # TODO: REMOVE THIS WHEN OFFICIAL
-    search_list = [SearchInputs(origin_sky_id='MAG', origin_entity_id='128668819', destination_sky_id='MAN', destination_entity_id='95673540', fly_out_date=datetime.datetime(2024, 12, 19, 0, 0), fly_back_date=datetime.datetime(2024, 12, 22, 0, 0), cabinClass='economy'), SearchInputs(origin_sky_id='HZK', origin_entity_id='129055516', destination_sky_id='MAN', destination_entity_id='95673540', fly_out_date=datetime.datetime(2024, 12, 19, 0, 0),fly_back_date=datetime.datetime(2024, 12, 22, 0, 0), cabinClass='economy')]
+    raw_flight_results = get_raw_flight_results(search_list)
+    
 
+def get_raw_flight_results(search_list: list):
     # flight_table = []
 
     # url = "https://sky-scrapper.p.rapidapi.com/api/v2/flights/searchFlights"
@@ -25,12 +26,18 @@ def get_flight_table_results_given_search_list(search_list):
     # for search_item in search_list:
     #     querystring = search_item.get_dict()
 
+    #     print()
+    #     print('query')
     #     print(querystring)
 
     #     response = requests.get(url, headers=headers, params=querystring)
 
-    #     flight_table.append(response.json())
+    #     flight_table.append(response.json()['data'])
 
+    # print(flight_table)
+
+    # return flight_table
     
-
-    # print([fake_flight_search])
+    # TODO: REMOVE THIS WHEN OFFICIAL
+    
+    pass

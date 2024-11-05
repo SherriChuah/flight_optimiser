@@ -20,13 +20,20 @@ def get_skyid_and_origin_entityid(country, iata):
 
     # response = requests.get(url, headers=headers, params=querystring).json()
 
+    # print(response)
+
 
     # data_list = response['data']
 
-    # TODO: UNCOMMENT ABOVE AND REMOVE BOTTOM LINE
+    # # TODO: UNCOMMENT ABOVE AND REMOVE BOTTOM LINE
     data_list = fake_data['data']
 
     # print(country, iata)
+
+    print('At retrieving skyid and entityid')
+    print(data_list)
+    print()
+    print()
 
     for data in data_list:
         # print((data['presentation']['suggestionTitle'].split('(')))
@@ -38,6 +45,7 @@ def get_skyid_and_origin_entityid(country, iata):
             if (iata in (data['presentation']['suggestionTitle'].split('('))[1] and 
                 data['presentation']['subtitle'] == country):
                 flight_param = data['navigation']['relevantFlightParams']
+                print('Matched')
                 return flight_param['skyId'], flight_param['entityId']
     
     print('Not matching airport')

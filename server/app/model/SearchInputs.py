@@ -9,7 +9,7 @@ class SearchInputs:
     destination_sky_id: str
     destination_entity_id: str
     fly_out_date: str # YYYY-MM-DD
-    cabin_class = 'economy'
+    cabin_class: str = 'economy'
     fly_back_date: Optional[str] = None # YYYY-MM-DD
 
 
