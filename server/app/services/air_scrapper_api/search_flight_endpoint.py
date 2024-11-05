@@ -9,12 +9,15 @@ from dotenv import load_dotenv
 load_dotenv('./../../../../server/secrets.env')
 
 
+
 def get_flight_table_results_given_search_list(search_list):
     raw_flight_results = get_raw_flight_results(search_list)
+
+    return raw_flight_results
     
 
 def get_raw_flight_results(search_list: list):
-    # flight_table = []
+    # raw_flight_info = []
 
     # url = "https://sky-scrapper.p.rapidapi.com/api/v2/flights/searchFlights"
 
@@ -32,12 +35,11 @@ def get_raw_flight_results(search_list: list):
 
     #     response = requests.get(url, headers=headers, params=querystring)
 
-    #     flight_table.append(response.json()['data'])
+    #     raw_flight_info.append(response.json()['data'])
 
-    # print(flight_table)
+    # print(raw_flight_info)
 
-    # return flight_table
+    # return raw_flight_info
     
     # TODO: REMOVE THIS WHEN OFFICIAL
-    
-    pass
+    return fake_data
