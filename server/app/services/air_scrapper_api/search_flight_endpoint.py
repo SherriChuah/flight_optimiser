@@ -10,6 +10,7 @@ load_dotenv('./../../../../server/secrets.env')
 
 
 
+
 def get_flight_table_results_given_search_list(search_list):
     raw_flight_results = get_raw_flight_results(search_list)
 

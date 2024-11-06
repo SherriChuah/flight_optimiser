@@ -28,7 +28,7 @@ class TestAirportCodes(unittest.TestCase):
         self.assertEqual(result2, expected_result2)
 
 
-    def test_get_departurre_airport_info(self):
+    def test_get_departure_airport_info(self):
         pass
 
 

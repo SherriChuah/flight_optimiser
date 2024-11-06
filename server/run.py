@@ -2,7 +2,7 @@ import os
 from flask import Flask, request, Response
 from flask_cors import CORS, cross_origin
 from app.services.mysql_service import get_all_airport_codes
-from server.app.services.flight_search.flight_processing_service import process_search_for_results
+from app.services.flight_search.flight_processing_service import process_search_for_results
 from app.utils.format import format_result_as_json
 
 app = Flask(__name__)
