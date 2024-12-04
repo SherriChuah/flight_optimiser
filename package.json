@@ -3,8 +3,12 @@
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@mui/material": "^6.0.2",
+    "@tanstack/react-table": "^8.20.5",
     "autosuggest-highlight": "^3.3.4",
+    "react-date-range": "^2.0.1",
     "react-form-wizard-component": "^0.2.7",
+    "react-hook-form": "^7.53.0",
+    "react-router-dom": "^6.26.2",
     "react-step-progress-bar": "^1.0.3",
     "styled-components": "^6.1.12"
   }

@@ -1,4 +1,5 @@
 import datetime
+from typing import Tuple
 import requests
 import os
 from app.model import SearchInputs
@@ -11,14 +12,9 @@ load_dotenv('./../../../../server/secrets.env')
 
 
 
-def get_flight_table_results_given_search_list(search_list):
-    raw_flight_results = get_raw_flight_results(search_list)
-
-    return raw_flight_results
-    
-
-def get_raw_flight_results(search_list: list):
-    # raw_flight_info = []
+def get_flight_table_results_given_search_list(search_list) -> Tuple[list, list]:
+    # raw_flight_info_list = []
+    # one_way_or_two_way = []
 
     # url = "https://sky-scrapper.p.rapidapi.com/api/v2/flights/searchFlights"
 
@@ -36,11 +32,16 @@ def get_raw_flight_results(search_list: list):
 
     #     response = requests.get(url, headers=headers, params=querystring)
 
-    #     raw_flight_info.append(response.json()['data'])
+    #     raw_flight_info_list.append(response.json()['data'])
+    # if 'returnDate' in querystring:
+    #    one_way_or_two_way.append("two-way")
+    # else:
+    #    one_way_or_two_way.append("one-way")
 
-    # print(raw_flight_info)
+    # print(raw_flight_info_list)
+    # print(one_way_or_two_way)
 
-    # return raw_flight_info
+    # return raw_flight_info_list, one_way_or_two_way
     
     # TODO: REMOVE THIS WHEN OFFICIAL
-    return fake_data
+    return fake_data_list, ['two-way']

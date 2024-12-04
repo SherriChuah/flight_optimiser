@@ -1,9 +1,13 @@
-# Flight Booking OPtimiser (WIP)
+# Flight Booking Optimiser (WIP)
 Get optimised flight time and cost between people flying from different origin airports to the same destination.
 
 # Frontend
 npm run dev
 
 # Backend
-python main.py
+
+.\my_venv\bin\activate
+
+
+python run.py
 

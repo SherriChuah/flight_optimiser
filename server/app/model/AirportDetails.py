@@ -2,11 +2,18 @@ from dataclasses import dataclass
 
 @dataclass
 class AirportDetails:
-    name: str
-    city: str
-    iata: str
     entityId: str
-
-
-    def get_str(self) -> str:
-        return f"{self.name}, {self.city} ({self.iata})"
+    name: str
+    iata: str
+    city: str
+    country: str
+    
+    def __str__(self) -> str:
+        return (
+            f"""
+            Airport ID:     {self.entityId}
+            Airport Name:   {self.name}
+            Airport IATA:   {self.iata}
+            City:           {self.city}
+            Country:        {self.country}
+            """)
