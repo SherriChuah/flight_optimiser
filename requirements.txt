@@ -1,13 +1,14 @@
 requests
 bs4
 pandas
-undetected_chromedriver
 openpyxl
-styled-components
-react-form-wizard-component
+# react-form-wizard-component
 sqlalchemy
 python-dotenv
 pymysql
-react-date-range
-@tanstack/react-table
-react-hook-form
+# react-date-range
+# react-hook-form
+flask
+flask_cors
+# styled-components
+# @tanstack/react-table

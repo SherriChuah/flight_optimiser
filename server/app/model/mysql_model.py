@@ -5,8 +5,9 @@ from dotenv import load_dotenv
 from app.services.sql_queries import get_all_rows_sql
 from typing import Tuple
 
+env_file_path = os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, 'secrets.env')
 
-load_dotenv('./../server/secrets.env')
+load_dotenv(env_file_path)
 
 def get_airport_codes_from_database() -> Tuple[list, tuple]:
     """Get airport codes from database
@@ -14,7 +15,6 @@ def get_airport_codes_from_database() -> Tuple[list, tuple]:
     Returns:
         Tuple(list, tuple): returns a list of columns and record results
     """
-
     engine = create_engine(os.getenv('DATABASE_URI'))
 
     # Connect to the database

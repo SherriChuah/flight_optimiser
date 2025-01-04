@@ -1,16 +1,17 @@
 from dataclasses import dataclass
+from datetime import datetime
 
-from model.AirportDetails import AirportDetails
-from model.CarrierDetails import CarrierDetails
+from app.model.AirportDetails import AirportDetails
+from app.model.CarrierDetails import CarrierDetails
 
 
 @dataclass
 class FullFlightDetails:
     origin_airport_details: AirportDetails
     destination_airport_details: AirportDetails
-    departure_time: dataclass.DateTime
-    arrival_time: dataclass.DateTime
-    duration_in_minutes: dataclass.Integer
+    departure_time: datetime
+    arrival_time: datetime
+    duration_in_minutes: int
     flight_number: str
     carrier_details: CarrierDetails
 

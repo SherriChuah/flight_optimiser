@@ -6,10 +6,8 @@ from app.model import SearchInputs
 from dotenv import load_dotenv
 
 # from app.services.air_scrapper_api.fake_flight_search_data import fake_flight_search
-
-load_dotenv('./../../../../server/secrets.env')
-
-
+env_file_path = os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, 'secrets.env')
+load_dotenv(env_file_path)
 
 
 def get_flight_table_results_given_search_list(search_list) -> Tuple[list, list]:
