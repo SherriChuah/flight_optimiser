@@ -4,12 +4,14 @@ from app.services.air_scrapper_api.search_airport_endpoint import (
     get_skyid_and_origin_entityid)
 
 
-def prepare_people_details_for_search(data):
+def prepare_people_details_for_search(data: dict) -> list[SearchInputs]:
     search_list = []
 
     for person_detail in data['peopleDetails']:
         origin_sky_id, origin_entity_id = get_departure_airport_info(person_detail['originAirport'])
+
         destination_sky_id, destination_entity_id = get_arrival_airport(data)
+        
         fly_out_date = get_travel_date(data, 'startDate')
         fly_back_date = get_travel_date(data, 'endDate')
         cabin_class = 'economy'

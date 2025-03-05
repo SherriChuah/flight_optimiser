@@ -16,9 +16,18 @@ def process_search_for_results(data: dict):
 
     search_list = prepare_people_details_for_search(data)
 
+    print('\n\n\n______________________________________________________')
+    print('Search LIst here')
+    print(search_list)
+
+
     raw_flight_json_result_list, one_way_or_two_way = get_flight_table_results_given_search_list(search_list)
 
     each_group_flight_search_info_list = clean_flight_json_to_structured(raw_flight_json_result_list, one_way_or_two_way)
+
+
+    print('HEREEEEE')
+    print(each_group_flight_search_info_list)
 
     ## NOTE: I have not included which flight info for each group, missed that oops
     ## now that i have the details of the each group i need to compare and do the analysis here
@@ -26,7 +35,7 @@ def process_search_for_results(data: dict):
     return
 
 
-def clean_flight_json_to_structured(raw_flight_table_results: list, one_way_or_two_way: list):
+def clean_flight_json_to_structured(raw_flight_table_results: list, one_way_or_two_way: list) -> list:
     each_group_flight_search_info_list = []
 
     # raw flight info for each search query
