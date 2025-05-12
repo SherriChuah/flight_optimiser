@@ -5,6 +5,7 @@
     "@mui/material": "^6.0.2",
     "@tanstack/react-table": "^8.20.5",
     "autosuggest-highlight": "^3.3.4",
+    "npm-check-updates": "^17.1.16",
     "react-date-range": "^2.0.1",
     "react-form-wizard-component": "^0.2.7",
     "react-hook-form": "^7.53.0",
