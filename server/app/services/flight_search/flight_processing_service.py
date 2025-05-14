@@ -15,6 +15,7 @@ from app.model.CarrierDetails import CarrierDetails
 from app.model import FullFlightDetails
 
 from app.utils.conversion import split_currency_amount
+from app.utils.best_flights_logic import best_flight_combo
 
 
 # todo remove option of depart and arrival time can include that filter in the result page eventually
@@ -34,7 +35,6 @@ def process_search_for_results(data: dict):
 
     raw_flight_json_result_list, one_way_or_two_way = get_flight_table_results_given_search_list(search_list)
 
-    # TODO: didn't filter out direct or indirect flights and time flight included so do thats
     filtered_itineraries = filter_direct_indirect_time_travel(
         raw_flight_json_result_list, data['peopleDetails'])
 
@@ -47,6 +47,9 @@ def process_search_for_results(data: dict):
     
     each_group_flight_search_info_list = clean_flight_json_to_structured(filtered_itineraries, one_way_or_two_way)
 
+    raw_flight_combo_list = best_flight_combo(each_group_flight_search_info_list)
+
+    return format_output_as_json(top_combo_for_each_group)
 
 
 
@@ -58,7 +61,6 @@ def process_search_for_results(data: dict):
 
     ## NOTE: I have not included which flight info for each group, missed that oops
     ## now that i have the details of the each group i need to compare and do the analysis here
-
     return
 
 
@@ -274,3 +276,12 @@ def format_segment_list_raw(segment_list: list):
 
     return segment_list_clean
 
+
+def format_output_as_json(raw_flight_combo_list: list):
+    """
+    Format list of flight combos into proper json format
+    # TODO: do i need to do json schema?
+    Args:
+        raw_flight_combo_list (list): List of list of flight details for each group
+    """
+    pass

@@ -2,7 +2,7 @@ from itertools import product
 
 from conversion import time_to_minutes
 
-def best_flight_combo(each_group_flight_search_info_list: list[list]):
+def best_flight_combo(each_group_flight_search_info_list: list[list], top_k=3):
     def score_combination(combo, wait_weight=2.0, cost_weight=0.5):
         # outbound score
         outbound_arrival_times = [
@@ -26,9 +26,8 @@ def best_flight_combo(each_group_flight_search_info_list: list[list]):
         return ((wait_weight * outbound_wait_time) + 
                 (wait_weight/2 * inbound_wait_time) + (cost_weight * total_cost))
 
-    # TODO: possibly do top k combos?
-    best_combinations = []
-    min_score = float('inf')
+
+    best_k_combinations = []
 
     df_group_flights = [group[1] for group in each_group_flight_search_info_list]
 
@@ -36,10 +35,14 @@ def best_flight_combo(each_group_flight_search_info_list: list[list]):
 
     for combo in all_combinations:
         score = score_combination(combo)
-        if score < min_score:
-            min_score = score
-            best_combinations = [combo]
-        elif score == min_score:
-            best_combinations.append(combo)
+        if len(best_k_combinations) < top_k:
+            best_k_combinations.append([score, combo])
+            # sort the list
+            best_k_combinations.sort(key=lambda x: x[0], reverse=True)
+        else:
+            if score > best_k_combinations[-1][0]:
+                best_k_combinations.pop()
+                best_k_combinations.append([score, combo])
+                best_k_combinations.sort(key=lambda x: x[0], reverse=True)
     
-    return best_combinations
+    return best_k_combinations
