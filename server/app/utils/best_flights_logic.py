@@ -1,6 +1,6 @@
 from itertools import product
 
-from conversion import time_to_minutes
+from .conversion import time_to_minutes
 
 def best_flight_combo(each_group_flight_search_info_list: list[list], top_k=3):
     def score_combination(combo, wait_weight=2.0, cost_weight=0.5):

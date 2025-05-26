@@ -12,7 +12,7 @@ from app.services.air_scrapper_api.search_flight_endpoint import (
 
 from app.model.AirportDetails import AirportDetails
 from app.model.CarrierDetails import CarrierDetails
-from app.model import FullFlightDetails
+from app.model.FullFlightDetails import FullFlightDetails
 
 from app.utils.conversion import split_currency_amount
 from app.utils.best_flights_logic import best_flight_combo
@@ -35,8 +35,16 @@ def process_search_for_results(data: dict):
 
     raw_flight_json_result_list, one_way_or_two_way = get_flight_table_results_given_search_list(search_list)
 
+    # TODO: filter people details time they want to get there and arrive
+    # TODO: remember that if overnight flight then need to consider that too
     filtered_itineraries = filter_direct_indirect_time_travel(
         raw_flight_json_result_list, data['peopleDetails'])
+    
+    # Make sure that the filtered itineraries has values in it
+    for itinerary in filtered_itineraries:
+        if not itinerary:
+            # TODO: might have to either break what the people decided on timing just to return something?
+            return
 
     # todo: remove this when done
     relative_path = f"../../../data_test/filtered_data_man_mxp_lhr_mxp.json"
@@ -49,10 +57,22 @@ def process_search_for_results(data: dict):
 
     raw_flight_combo_list = best_flight_combo(each_group_flight_search_info_list)
 
-    return format_output_as_json(top_combo_for_each_group)
+    print()
+    print()
+    print()
+    print(raw_flight_combo_list)
 
+    # todo: remove this when done
+    import pickle
 
+    # Saving
+    relative_path = f"../../../data_test/flight_combo_man_mxp_lhr_mxp.pkl"
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    absolute_path = os.path.normpath(os.path.join(script_dir, relative_path))
+    with open(absolute_path, "wb") as f:
+        pickle.dump(raw_flight_combo_list, f)
 
+    return format_output_as_json(raw_flight_combo_list)
 
     print('HEREEEEE')
     print(each_group_flight_search_info_list)
@@ -234,7 +254,7 @@ def get_flight_details(leg_details: dict):
 
 
 def format_segment_list_raw(segment_list: list):
-    # flight route kinda for the origin to destimation
+    # flight route kinda for the origin to destination
     segment_list_clean = []
 
     for segment in segment_list:
